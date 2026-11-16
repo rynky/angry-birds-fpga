@@ -1,8 +1,6 @@
 # Angry Birds FPGA Edition
 
-## Introduction
-
-This project is an Angry Birds-style slingshot game written in Verilog HDL for the Altera DE1-SoC FPGA board. The game logic, projectile FSM, graphics rendering and scoring all run in hardware, with video output over VGA and the score shown on the 7-segment displays.
+This project is an Angry Birds-style slingshot game written in Verilog HDL for the Altera DE1-SoC FPGA board with video output over VGA.
 
 The player sets the bird's launch arc with a custom physical controller built around a slider potentiometer. The signal path is:
 
