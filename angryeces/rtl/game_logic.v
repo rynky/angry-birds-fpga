@@ -1,0 +1,565 @@
+module game_logic #(parameter Num_blocks=12,parameter Num_pigs=3,parameter Num_dots=10,parameter full_power =15)(
+    input wire clk,
+    input wire reset,
+    input wire frame_tick,
+    input wire key_press,
+    input wire key_up,      // KEY2 held: stretch the arc taller
+    input wire key_down,    // KEY3 held: squash the arc flatter
+    input wire [9:0] sw,
+    input wire [3:0] power,
+
+    output reg [2:0] state,
+    output reg [1:0] level,
+    output reg [9:0] ptScreen_add,
+    output reg new_game,
+    output reg game_end,
+    output reg [1:0] bird,
+    output reg bird_vis,
+    output wire signed [9:0] bird_x,
+    output wire signed [9:0] bird_y,
+    output wire [2:0] waiting,
+
+    output wire [Num_blocks*9-1:0] blk_x_f,
+    output wire [Num_blocks*8-1:0] blk_y_f,
+    output reg [Num_blocks-1:0] blk_horiz,
+    output reg [Num_blocks-1:0] blk_alive,
+    output wire [Num_pigs*9-1:0] pig_x_f,
+    output wire [Num_pigs*8-1:0] pig_y_f,
+    output reg [Num_pigs-1:0] pig_alive,
+
+    output wire [Num_dots*9-1:0] dot_x_f,
+    output wire [Num_dots*8-1:0] dot_y_f,
+    output wire [Num_dots-1:0] dot_on,
+
+    output reg exp_on,
+    output reg [8:0] exp_x,
+    output reg [7:0] exp_y,
+    output reg [5:0] exp_r,
+
+    output wire [Num_blocks-1:0] blk_flash,
+    output wire [Num_pigs-1:0] pig_flash
+);
+    localparam Screen_TITLE = 3'd0, Screen_LOAD = 3'd1, Screen_AIM = 3'd2, Screen_FLY = 3'd3, Screen_SETTLE = 3'd4, Screen_CLEAR = 3'd5, Screen_OVER = 3'd6, Screen_WIN = 3'd7;
+    localparam GROUND = 9'd200;
+    localparam signed [15:0] GRAVITY = 16'sd4;
+    localparam signed [15:0] SLINGSHOT_X = 16'sd40 * 64;
+    localparam signed [15:0] SLINGSHOT_Y = 16'sd158 * 64;
+    localparam POINTS_PIG = 10'd50, POINTS_BLOCK = 10'd5, POINTS_BIRD = 10'd25;
+
+    reg [8:0] block_x [0:Num_blocks-1];
+    reg [7:0] block_y [0:Num_blocks-1];
+    reg [8:0] pig_x [0:Num_pigs-1];
+    reg [7:0] pig_y [0:Num_pigs-1];
+    reg [5:0] pig_fall_distance [0:Num_pigs-1];
+
+    reg signed [15:0] position_x, position_y, velocity_x, velocity_y;
+    reg ability_used, ability_requested;
+    reg [7:0] timer;
+    reg [4:0] explosion_timer;
+    reg [2:0] phase;
+    reg any_falling_reg;
+
+    // Vertical arc scaling. The flight is simulated unscaled; only its height above/below the
+    // slingshot is multiplied by arc_scale/64 when turned into a screen y. That is a pure
+    // vertical stretch, so the slingshot stays the left x-intercept and power still sets range.
+    localparam [7:0] ARC_SCALE_MIN = 8'd32, ARC_SCALE_ONE = 8'd64, ARC_SCALE_MAX = 8'd128;  // 0.5x .. 1x .. 2x
+    localparam signed [9:0] BIRD_GROUND_Y = 10'sd180;   // GROUND minus the 20-pixel bird
+    reg [7:0] arc_scale;
+    reg on_ground;
+
+    function signed [9:0] scale_y;
+        input signed [15:0] pos;      // unscaled y, 1/64 pixel units
+        input [7:0] scale;            // 64 = 1.0
+        reg signed [16:0] offset;
+        reg signed [25:0] product;
+        reg signed [13:0] pixel_y;
+        begin
+            offset = pos - SLINGSHOT_Y;
+            product = offset * $signed({1'b0, scale});
+            pixel_y = (product >>> 12) + 14'sd158;     // /64 for the scale, /64 for sub-pixels; 158 = slingshot y
+            if (pixel_y > 14'sd511) scale_y = 10'sd511;
+            else if (pixel_y < -14'sd512) scale_y = -10'sd512;
+            else scale_y = pixel_y[9:0];
+        end
+    endfunction
+
+    reg signed [15:0] simulation_x, simulation_y, simulation_velocity_x, simulation_velocity_y;
+    reg simulation_running;
+    reg [3:0] simulation_dot_index;
+    reg [2:0] simulation_step_count;
+    reg [8:0] dot_x_reg [0:Num_dots-1];
+    reg [7:0] dot_y_reg [0:Num_dots-1];
+    reg [Num_dots-1:0] dot_valid;
+
+    assign bird_x = position_x[15:6];
+    assign bird_y = on_ground ? BIRD_GROUND_Y : scale_y(position_y, arc_scale);
+    assign waiting = {(bird < 2'd2), (bird < 2'd1), 1'b0} & {3{(state != Screen_TITLE)}};
+    assign dot_on = dot_valid & {Num_dots{(state == Screen_AIM)}};
+
+    genvar index_i, index_j;
+    generate
+        for (index_i = 0; index_i < Num_blocks; index_i = index_i + 1) begin : gen_block_flatten
+            assign blk_x_f[index_i*9 +: 9] = block_x[index_i];
+            assign blk_y_f[index_i*8 +: 8] = block_y[index_i];
+        end
+        for (index_i = 0; index_i < Num_pigs; index_i = index_i + 1) begin : gen_pig_flatten
+            assign pig_x_f[index_i*9 +: 9] = pig_x[index_i];
+            assign pig_y_f[index_i*8 +: 8] = pig_y[index_i];
+        end
+        for (index_i = 0; index_i < Num_dots; index_i = index_i + 1) begin : gen_dot_flatten
+            assign dot_x_f[index_i*9 +: 9] = dot_x_reg[index_i];
+            assign dot_y_f[index_i*8 +: 8] = dot_y_reg[index_i];
+        end
+    endgenerate
+
+    wire [18:0] loaded_block [0:Num_blocks-1];
+    wire [17:0] loaded_pig [0:Num_blocks-1];
+    generate
+        for (index_i = 0; index_i < Num_blocks; index_i = index_i + 1) begin : gen_level_data
+            level_data level_data_inst (.level(level), .index(index_i[3:0]), .block(loaded_block[index_i]), .pig(loaded_pig[index_i]));
+        end
+    endgenerate
+
+    // bird vs block/pig collisions
+    wire col_pause, col_spent;
+    wire [Num_blocks-1:0] col_blk_kill;
+    wire [Num_pigs-1:0] col_pig_kill;
+    wire [1:0] col_health;
+    collision #(.Num_blocks(Num_blocks), .Num_pigs(Num_pigs), .MAX_HEALTH(3), .FLASH_FRAMES(15)) collision_inst (
+        .clk(clk), .reset(reset), .frame_tick(frame_tick),
+        .active((state == Screen_FLY) && bird_vis),
+        .bird_x(bird_x), .bird_y(bird_y),
+        .blk_x_f(blk_x_f), .blk_y_f(blk_y_f), .blk_horiz(blk_horiz), .blk_alive(blk_alive),
+        .pig_x_f(pig_x_f), .pig_y_f(pig_y_f), .pig_alive(pig_alive),
+        .pause(col_pause), .blk_flash(blk_flash), .pig_flash(pig_flash),
+        .blk_kill(col_blk_kill), .pig_kill(col_pig_kill), .spent(col_spent), .health(col_health));
+
+    // Launch angle is fixed at 45 degrees (table entry 8) so every shot rises out of the
+    // slingshot and the slingshot is the left x-intercept of the arc; power sets the range.
+    // To bring back switch-controlled angles, change LAUNCH_ANGLE below to sw[7:4].
+    localparam [3:0] LAUNCH_ANGLE = 4'd8;
+    reg [8:0] horizontal_weight, vertical_weight;
+    always @* begin
+        case (LAUNCH_ANGLE)
+            4'd0: begin horizontal_weight = 9'd255; vertical_weight = 9'd22; end
+            4'd1: begin horizontal_weight = 9'd252; vertical_weight = 9'd44; end
+            4'd2: begin horizontal_weight = 9'd247; vertical_weight = 9'd66; end
+            4'd3: begin horizontal_weight = 9'd241; vertical_weight = 9'd88; end
+            4'd4: begin horizontal_weight = 9'd232; vertical_weight = 9'd108; end
+            4'd5: begin horizontal_weight = 9'd222; vertical_weight = 9'd128; end
+            4'd6: begin horizontal_weight = 9'd210; vertical_weight = 9'd147; end
+            4'd7: begin horizontal_weight = 9'd196; vertical_weight = 9'd165; end
+            4'd8: begin horizontal_weight = 9'd181; vertical_weight = 9'd181; end
+            4'd9: begin horizontal_weight = 9'd165; vertical_weight = 9'd196; end
+            4'd10: begin horizontal_weight = 9'd147; vertical_weight = 9'd210; end
+            4'd11: begin horizontal_weight = 9'd128; vertical_weight = 9'd222; end
+            4'd12: begin horizontal_weight = 9'd108; vertical_weight = 9'd232; end
+            4'd13: begin horizontal_weight = 9'd88; vertical_weight = 9'd241; end
+            4'd14: begin horizontal_weight = 9'd66; vertical_weight = 9'd247; end
+            default: begin horizontal_weight = 9'd44; vertical_weight = 9'd252; end
+        endcase
+    end
+
+    localparam SLING_STEPS = 9;                                // slingshot input range 0..9
+    reg [3:0] clamped_power;
+    always @* begin
+        if (power > SLING_STEPS) clamped_power = SLING_STEPS[3:0];
+        else clamped_power = power;
+    end
+
+    // each slingshot step adds full_power/9 of power: 0 -> 0, 9 -> full_power
+    wire [15:0] power_ninths = clamped_power * full_power;     // 0..135 (power in 1/9 units)
+    wire [15:0] power_product = power_ninths * 16'd180;
+    wire [8:0] speed_x = 9'd96 + power_product / (SLING_STEPS * full_power);   // 96 (step 0) .. 276 (step 9)
+    localparam [8:0] SPEED_Y = 9'd276;                         // fixed: arc height independent of power
+    wire [17:0] velocity_x_product = speed_x * horizontal_weight;
+    wire [17:0] velocity_y_product = SPEED_Y * vertical_weight;
+    wire signed [15:0] launch_velocity_x = $signed({6'd0, velocity_x_product[17:8]});
+    wire signed [15:0] launch_velocity_y = -$signed({6'd0, velocity_y_product[17:8]});
+
+    wire signed [11:0] explosion_left = bird_x - 12'sd16, explosion_right = bird_x + 12'sd36;
+    wire signed [11:0] explosion_top = bird_y - 12'sd16, explosion_bottom = bird_y + 12'sd36;
+
+    wire [Num_blocks-1:0] block_blasted, block_stable;
+    wire [Num_pigs-1:0] pig_blasted, pig_stable, pig_crushed;
+
+    generate
+        for (index_i = 0; index_i < Num_blocks; index_i = index_i + 1) begin : gen_block_physics
+            reg [8:0] block_width, block_height;
+            always @* begin
+                if (blk_horiz[index_i]) begin
+                    block_width = 9'd40;
+                    block_height = 9'd8;
+                end else begin
+                    block_width = 9'd8;
+                    block_height = 9'd40;
+                end
+            end
+
+            wire signed [11:0] box_left = {3'b000, block_x[index_i]};
+            wire signed [11:0] box_right = {3'b000, block_x[index_i]} + {3'b000, block_width};
+            wire signed [11:0] box_top = {4'b0000, block_y[index_i]};
+            wire signed [11:0] box_bottom = {4'b0000, block_y[index_i]} + {3'b000, block_height};
+            assign block_blasted[index_i] = blk_alive[index_i] && (explosion_left < box_right) && (box_left < explosion_right) && (explosion_top < box_bottom) && (box_top < explosion_bottom);
+
+            wire [8:0] block_bottom = {1'b0, block_y[index_i]} + block_height;
+            wire [Num_blocks-1:0] block_supported_by;
+            for (index_j = 0; index_j < Num_blocks; index_j = index_j + 1) begin : gen_block_support
+                reg [8:0] other_width;
+                always @* begin
+                    if (blk_horiz[index_j]) other_width = 9'd40;
+                    else other_width = 9'd8;
+                end
+                if (index_j == index_i) begin : gen_self
+                    assign block_supported_by[index_j] = 1'b0;
+                end else begin : gen_other
+                    assign block_supported_by[index_j] = blk_alive[index_j] && ({1'b0, block_y[index_j]} == block_bottom) &&
+                                                         (block_x[index_i] < block_x[index_j] + other_width) && (block_x[index_j] < block_x[index_i] + block_width);
+                end
+            end
+            wire has_two_supports = |(block_supported_by & (block_supported_by - 1'b1));
+            assign block_stable[index_i] = (block_bottom >= GROUND) || (blk_horiz[index_i] && has_two_supports) || (!blk_horiz[index_i] && |block_supported_by);
+        end
+
+        for (index_i = 0; index_i < Num_pigs; index_i = index_i + 1) begin : gen_pig_physics
+            wire signed [11:0] box_left = {3'b000, pig_x[index_i]}, box_right = {3'b000, pig_x[index_i]} + 12'sd20;
+            wire signed [11:0] box_top = {4'b0000, pig_y[index_i]}, box_bottom = {4'b0000, pig_y[index_i]} + 12'sd20;
+            assign pig_blasted[index_i] = pig_alive[index_i] && (explosion_left < box_right) && (box_left < explosion_right) && (explosion_top < box_bottom) && (box_top < explosion_bottom);
+
+            wire [8:0] pig_bottom = {1'b0, pig_y[index_i]} + 9'd20;
+            wire [Num_blocks-1:0] on_block;
+            wire [Num_pigs-1:0] on_pig;
+            wire [Num_blocks-1:0] crushed_by_block;
+            for (index_j = 0; index_j < Num_blocks; index_j = index_j + 1) begin : gen_pig_block_support
+                reg [8:0] other_width;
+                always @* begin
+                    if (blk_horiz[index_j]) other_width = 9'd40;
+                    else other_width = 9'd8;
+                end
+                assign on_block[index_j] = blk_alive[index_j] && ({1'b0, block_y[index_j]} == pig_bottom) &&
+                                           (pig_x[index_i] < block_x[index_j] + other_width) && (block_x[index_j] < pig_x[index_i] + 9'd20);
+                assign crushed_by_block[index_j] = blk_alive[index_j] && !block_stable[index_j] && !blk_horiz[index_j] &&
+                                                   (pig_x[index_i] < block_x[index_j] + 9'd8) && (block_x[index_j] < pig_x[index_i] + 9'd20) &&
+                                                   ({1'b0, pig_y[index_i]} < {1'b0, block_y[index_j]} + 9'd42) &&
+                                                   ({1'b0, block_y[index_j]} + 9'd2 < pig_bottom);
+            end
+            for (index_j = 0; index_j < Num_pigs; index_j = index_j + 1) begin : gen_pig_pig_support
+                if (index_j == index_i) begin : gen_self
+                    assign on_pig[index_j] = 1'b0;
+                end else begin : gen_other
+                    assign on_pig[index_j] = pig_alive[index_j] && ({1'b0, pig_y[index_j]} == pig_bottom) &&
+                                             (pig_x[index_i] < pig_x[index_j] + 9'd20) && (pig_x[index_j] < pig_x[index_i] + 9'd20);
+                end
+            end
+            assign pig_stable[index_i] = (pig_bottom >= GROUND) || |on_block || |on_pig;
+            assign pig_crushed[index_i] = |crushed_by_block;
+        end
+    endgenerate
+
+    wire [Num_blocks-1:0] block_breaking = blk_alive & ~block_stable & blk_horiz;
+    wire [Num_blocks-1:0] block_falling = blk_alive & ~block_stable & ~blk_horiz;
+    wire [Num_pigs-1:0] pig_falling = pig_alive & ~pig_stable;
+    wire any_falling = |block_breaking | |block_falling | |pig_falling;
+    wire [Num_blocks-1:0] block_removed = block_breaking | (col_blk_kill & blk_alive);
+
+    reg [3:0] block_blasted_count, pig_blasted_count, block_breaking_count;
+    reg [4:0] count_index;
+    always @* begin
+        block_blasted_count = 4'd0;
+        block_breaking_count = 4'd0;
+        for (count_index = 5'd0; count_index < Num_blocks; count_index = count_index + 5'd1) begin
+            block_blasted_count = block_blasted_count + block_blasted[count_index];
+            block_breaking_count = block_breaking_count + block_removed[count_index];
+        end
+        pig_blasted_count = 4'd0;
+        for (count_index = 5'd0; count_index < Num_pigs; count_index = count_index + 5'd1) begin
+            pig_blasted_count = pig_blasted_count + pig_blasted[count_index];
+        end
+    end
+
+    reg [4:0] loop_index;
+    reg signed [15:0] temp_velocity_x, temp_velocity_y;
+    reg [Num_pigs-1:0] pig_died;
+    reg [3:0] pig_died_count;
+
+    wire signed [15:0] simulation_next_x = simulation_x + simulation_velocity_x;
+    wire signed [15:0] simulation_next_y = simulation_y + simulation_velocity_y;
+    wire signed [9:0] simulation_int_x = simulation_next_x[15:6];
+    wire signed [9:0] simulation_int_y = scale_y(simulation_next_y, arc_scale);
+
+    always @(posedge clk) begin
+        if (reset) begin
+            state <= Screen_TITLE;
+            level <= 2'd0;
+            ptScreen_add <= 10'd0;
+            new_game <= 1'b0;
+            game_end <= 1'b0;
+            bird <= 2'd0;
+            bird_vis <= 1'b0;
+            blk_alive <= {Num_blocks{1'b0}};
+            pig_alive <= {Num_pigs{1'b0}};
+            blk_horiz <= {Num_blocks{1'b0}};
+            position_x <= SLINGSHOT_X;
+            position_y <= SLINGSHOT_Y;
+            velocity_x <= 16'sd0;
+            velocity_y <= 16'sd0;
+            ability_used <= 1'b0;
+            ability_requested <= 1'b0;
+            timer <= 8'd0;
+            phase <= 3'd0;
+            any_falling_reg <= 1'b0;
+            arc_scale <= ARC_SCALE_ONE;
+            on_ground <= 1'b0;
+            exp_on <= 1'b0;
+            exp_r <= 6'd0;
+            explosion_timer <= 5'd0;
+            exp_x <= 9'd0;
+            exp_y <= 8'd0;
+            simulation_running <= 1'b0;
+            dot_valid <= {Num_dots{1'b0}};
+            simulation_dot_index <= 4'd0;
+            simulation_step_count <= 3'd0;
+            simulation_x <= 16'sd0;
+            simulation_y <= 16'sd0;
+            simulation_velocity_x <= 16'sd0;
+            simulation_velocity_y <= 16'sd0;
+            for (loop_index = 5'd0; loop_index < Num_blocks; loop_index = loop_index + 5'd1) begin
+                block_x[loop_index] <= 9'd0;
+                block_y[loop_index] <= 8'd0;
+            end
+            for (loop_index = 5'd0; loop_index < Num_pigs; loop_index = loop_index + 5'd1) begin
+                pig_x[loop_index] <= 9'd0;
+                pig_y[loop_index] <= 8'd0;
+                pig_fall_distance[loop_index] <= 6'd0;
+            end
+            for (loop_index = 5'd0; loop_index < Num_dots; loop_index = loop_index + 5'd1) begin
+                dot_x_reg[loop_index] <= 9'd0;
+                dot_y_reg[loop_index] <= 8'd0;
+            end
+        end else begin
+            ptScreen_add <= 10'd0;
+            new_game <= 1'b0;
+            game_end <= 1'b0;
+
+            if (simulation_running) begin
+                simulation_x <= simulation_next_x;
+                simulation_y <= simulation_next_y;
+                simulation_velocity_y <= simulation_velocity_y + GRAVITY;
+                if (simulation_step_count == 3'd5) begin
+                    simulation_step_count <= 3'd0;
+                    dot_x_reg[simulation_dot_index] <= simulation_int_x[8:0] + 9'd9;
+                    dot_y_reg[simulation_dot_index] <= simulation_int_y[7:0] + 8'd9;
+                    dot_valid[simulation_dot_index] <= (simulation_int_y > -10'sd10) && (simulation_int_y + 10'sd10 < 10'sd200) &&
+                                                       (simulation_int_x > -10'sd10) && (simulation_int_x < 10'sd310);
+                    if (simulation_dot_index == Num_dots - 1) simulation_running <= 1'b0;
+                    simulation_dot_index <= simulation_dot_index + 4'd1;
+                end else begin
+                    simulation_step_count <= simulation_step_count + 3'd1;
+                end
+            end
+
+            // KEY2 / KEY3 held while aiming: change the arc height by 1/64 per frame
+            if (state == Screen_AIM && frame_tick) begin
+                if (key_up && !key_down && arc_scale < ARC_SCALE_MAX) arc_scale <= arc_scale + 8'd1;
+                else if (key_down && !key_up && arc_scale > ARC_SCALE_MIN) arc_scale <= arc_scale - 8'd1;
+            end
+
+            if (key_press && state == Screen_FLY && !ability_used)
+                ability_requested <= 1'b1;
+
+            case (phase)
+                3'd0: if (frame_tick && (state == Screen_AIM || state == Screen_FLY || state == Screen_SETTLE))
+                    phase <= 3'd1;
+
+                3'd1: begin
+                    if (state == Screen_FLY && bird_vis && !col_pause) begin
+                        position_x <= position_x + velocity_x;
+                        position_y <= position_y + velocity_y;
+                        velocity_y <= velocity_y + GRAVITY;
+                    end
+                    if ((state == Screen_FLY && !col_pause) || state == Screen_SETTLE) begin
+                        if (timer < 8'hFF) timer <= timer + 8'd1;
+                    end
+                    if (exp_on) begin
+                        explosion_timer <= explosion_timer + 5'd1;
+                        if (exp_r < 6'd30) exp_r <= exp_r + 6'd4;
+                        if (explosion_timer == 5'd20) exp_on <= 1'b0;
+                    end
+                    if (state == Screen_AIM) begin
+                        simulation_x <= SLINGSHOT_X;
+                        simulation_y <= SLINGSHOT_Y;
+                        simulation_velocity_x <= launch_velocity_x;
+                        simulation_velocity_y <= launch_velocity_y;
+                        simulation_dot_index <= 4'd0;
+                        simulation_step_count <= 3'd0;
+                        simulation_running <= 1'b1;
+                    end
+                    phase <= 3'd2;
+                end
+
+                3'd2: begin
+                    if (state == Screen_FLY && bird_vis) begin
+                        if (col_pause) begin
+                            // frozen while an obstacle flashes; bird vanishes on its last break
+                            if (col_spent) begin
+                                bird_vis <= 1'b0;
+                                state <= Screen_SETTLE;
+                                timer <= 8'd0;
+                            end
+                        end else if (ability_requested && !ability_used && bird == 2'd2) begin
+                            ability_used <= 1'b1;
+                            ability_requested <= 1'b0;
+                            exp_on <= 1'b1;
+                            explosion_timer <= 5'd0;
+                            exp_r <= 6'd6;
+                            exp_x <= bird_x[8:0] + 9'd10;
+                            exp_y <= bird_y[7:0] + 8'd10;
+                            blk_alive <= blk_alive & ~block_blasted;
+                            pig_alive <= pig_alive & ~pig_blasted;
+                            ptScreen_add <= POINTS_BLOCK * block_blasted_count + POINTS_PIG * pig_blasted_count;
+                            bird_vis <= 1'b0;
+                            state <= Screen_SETTLE;
+                            timer <= 8'd0;
+                        end else begin
+                            temp_velocity_x = velocity_x;
+                            temp_velocity_y = velocity_y;
+                            if (ability_requested && !ability_used) begin
+                                ability_used <= 1'b1;
+                                ability_requested <= 1'b0;
+                                if (bird == 2'd1) begin
+                                    temp_velocity_x = velocity_x <<< 1;
+                                    temp_velocity_y = velocity_y <<< 1;
+                                end
+                            end
+                            velocity_x <= temp_velocity_x;
+                            velocity_y <= temp_velocity_y;
+
+                            if (bird_y + 10'sd20 >= $signed({1'b0, GROUND})) begin
+                                on_ground <= 1'b1;   // bird_y then sits exactly on the ground
+                                state <= Screen_SETTLE;
+                                timer <= 8'd0;
+                            end else if (bird_x > 10'sd320 || bird_x < -10'sd24 ||
+                                         bird_y > 10'sd240 || timer == 8'd250) begin
+                                bird_vis <= 1'b0;
+                                state <= Screen_SETTLE;
+                                timer <= 8'd0;
+                            end
+                        end
+                    end
+                    phase <= 3'd3;
+                end
+
+                3'd3: begin
+                    for (loop_index = 5'd0; loop_index < Num_blocks; loop_index = loop_index + 5'd1) begin
+                        if (block_breaking[loop_index] || col_blk_kill[loop_index]) blk_alive[loop_index] <= 1'b0;
+                        if (block_falling[loop_index]) block_y[loop_index] <= block_y[loop_index] + 8'd2;
+                    end
+                    pig_died = {Num_pigs{1'b0}};
+                    pig_died_count = 4'd0;
+                    for (loop_index = 5'd0; loop_index < Num_pigs; loop_index = loop_index + 5'd1) begin
+                        if (pig_alive[loop_index]) begin
+                            if (pig_crushed[loop_index] || col_pig_kill[loop_index]) begin
+                                pig_died[loop_index] = 1'b1;
+                                pig_died_count = pig_died_count + 4'd1;
+                            end else if (!pig_stable[loop_index]) begin
+                                pig_y[loop_index] <= pig_y[loop_index] + 8'd2;
+                                if (pig_fall_distance[loop_index] < 6'd63)
+                                    pig_fall_distance[loop_index] <= pig_fall_distance[loop_index] + 6'd2;
+                            end else begin
+                                if (pig_fall_distance[loop_index] >= 6'd16) begin
+                                    pig_died[loop_index] = 1'b1;
+                                    pig_died_count = pig_died_count + 4'd1;
+                                end
+                                pig_fall_distance[loop_index] <= 6'd0;
+                            end
+                        end
+                    end
+                    pig_alive <= pig_alive & ~pig_died;
+                    ptScreen_add <= POINTS_BLOCK * block_breaking_count + POINTS_PIG * pig_died_count;
+                    any_falling_reg <= any_falling;
+                    phase <= 3'd4;
+                end
+
+                3'd4: begin
+                    if (state == Screen_SETTLE && timer >= 8'd45 && !any_falling_reg && !exp_on) begin
+                        if (pig_alive == {Num_pigs{1'b0}}) begin
+                            ptScreen_add <= POINTS_BIRD * (10'd2 - bird);
+                            if (level == 2'd2) begin
+                                state <= Screen_WIN;
+                                game_end <= 1'b1;
+                            end else begin
+                                state <= Screen_CLEAR;
+                            end
+                        end else if (bird != 2'd2) begin
+                            bird <= bird + 2'd1;
+                            bird_vis <= 1'b1;
+                            position_x <= SLINGSHOT_X;
+                            position_y <= SLINGSHOT_Y;
+                            on_ground <= 1'b0;
+                            ability_used <= 1'b0;
+                            ability_requested <= 1'b0;
+                            state <= Screen_AIM;
+                        end else begin
+                            state <= Screen_OVER;
+                            game_end <= 1'b1;
+                        end
+                    end
+                    phase <= 3'd0;
+                end
+                default: phase <= 3'd0;
+            endcase
+
+            case (state)
+                Screen_LOAD: begin
+                    for (loop_index = 5'd0; loop_index < Num_blocks; loop_index = loop_index + 5'd1) begin
+                        blk_alive[loop_index] <= loaded_block[loop_index][18];
+                        blk_horiz[loop_index] <= loaded_block[loop_index][17];
+                        block_x[loop_index] <= loaded_block[loop_index][16:8];
+                        block_y[loop_index] <= loaded_block[loop_index][7:0];
+                    end
+                    for (loop_index = 5'd0; loop_index < Num_pigs; loop_index = loop_index + 5'd1) begin
+                        pig_alive[loop_index] <= loaded_pig[loop_index][17];
+                        pig_x[loop_index] <= loaded_pig[loop_index][16:8];
+                        pig_y[loop_index] <= loaded_pig[loop_index][7:0];
+                        pig_fall_distance[loop_index] <= 6'd0;
+                    end
+                    bird <= 2'd0;
+                    bird_vis <= 1'b1;
+                    position_x <= SLINGSHOT_X;
+                    position_y <= SLINGSHOT_Y;
+                    on_ground <= 1'b0;
+                    ability_used <= 1'b0;
+                    ability_requested <= 1'b0;
+                    exp_on <= 1'b0;
+                    dot_valid <= {Num_dots{1'b0}};
+                    state <= Screen_AIM;
+                end
+                Screen_TITLE: if (key_press) begin
+                    if (sw[9:8] == 2'd3) level <= 2'd2;
+                    else level <= sw[9:8];
+                    new_game <= 1'b1;
+                    arc_scale <= ARC_SCALE_ONE;
+                    state <= Screen_LOAD;
+                end
+                Screen_AIM: if (key_press) begin
+                    position_x <= SLINGSHOT_X;
+                    position_y <= SLINGSHOT_Y;
+                    velocity_x <= launch_velocity_x;
+                    velocity_y <= launch_velocity_y;
+                    on_ground <= 1'b0;
+                    timer <= 8'd0;
+                    ability_used <= 1'b0;
+                    ability_requested <= 1'b0;
+                    simulation_running <= 1'b0;
+                    state <= Screen_FLY;
+                end
+                Screen_CLEAR: if (key_press) begin
+                    level <= level + 2'd1;
+                    state <= Screen_LOAD;
+                end
+                Screen_OVER, Screen_WIN: if (key_press) state <= Screen_TITLE;
+                default: ;
+            endcase
+        end
+    end
+endmodule
