@@ -1,0 +1,98 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces
+vcollision
+Z1 !s110 1795568351
+!i10b 1
+!s100 RTZzhOFSnZ=h<Q@1W293j1
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IzKUCGcm3aNJ^ZefH6P=KX2
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z4 w1795565628
+8rtl/collision.v
+Frtl/collision.v
+!i122 0
+L0 5 138
+Z5 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z6 !s108 1795568351.000000
+!s107 sim/tb_projectile.v|rtl/collision.v|rtl/level_data.v|rtl/game_logic.v|
+Z7 !s90 -reportprogress|300|rtl/game_logic.v|rtl/level_data.v|rtl/collision.v|sim/tb_projectile.v|
+!i113 1
+Z8 tCvgOpt 0
+vgame_logic
+R1
+!i10b 1
+!s100 RB`?zf;BS``VW3XTeN[M?2
+R2
+IeX:7gg;`<HLh?g89`SSGR2
+R3
+R0
+w1795568055
+8rtl/game_logic.v
+Frtl/game_logic.v
+!i122 0
+L0 1 565
+R5
+r1
+!s85 0
+31
+R6
+Z9 !s107 sim/tb_projectile.v|rtl/collision.v|rtl/level_data.v|rtl/game_logic.v|
+R7
+!i113 1
+R8
+vlevel_data
+R1
+!i10b 1
+!s100 KmijZn65>A8W7XPN4=gUG0
+R2
+Inljl;ZoDITaURGZOMN>Uk2
+R3
+R0
+R4
+8rtl/level_data.v
+Frtl/level_data.v
+!i122 0
+L0 1 59
+R5
+r1
+!s85 0
+31
+R6
+R9
+R7
+!i113 1
+R8
+vtb_projectile
+R1
+!i10b 1
+!s100 FN@l@3?>i^W4iNTI=RmeK3
+R2
+IIQokBj1Z5==mX0BZF[diN3
+R3
+R0
+w1795568227
+8sim/tb_projectile.v
+Fsim/tb_projectile.v
+!i122 0
+L0 3 253
+R5
+r1
+!s85 0
+31
+R6
+R9
+R7
+!i113 1
+R8
