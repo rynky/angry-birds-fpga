@@ -1,0 +1,22 @@
+
+State Machine - |angry_eces_top|game_logic:u_game|phase
+Name phase.011 phase.010 phase.001 phase.000 phase.100 
+phase.000 0 0 0 0 0 
+phase.001 0 0 1 1 0 
+phase.010 0 1 0 1 0 
+phase.011 1 0 0 1 0 
+phase.100 0 0 0 1 1 
+
+State Machine - |angry_eces_top|game_logic:u_game|collision:collision_inst|col_state
+Name col_state.OBSTACLE_REMOVE col_state.OBSTACLE_FLASH col_state.OBSTACLE_FLY col_state.OBSTACLE_IDLE 
+col_state.OBSTACLE_IDLE 0 0 0 0 
+col_state.OBSTACLE_FLY 0 0 1 1 
+col_state.OBSTACLE_FLASH 0 1 0 1 
+col_state.OBSTACLE_REMOVE 1 0 0 1 
+
+State Machine - |angry_eces_top|slingshot_rx:u_sling|state
+Name state.STOP state.DATA state.START state.IDLE 
+state.IDLE 0 0 0 0 
+state.START 0 0 1 1 
+state.DATA 0 1 0 1 
+state.STOP 1 0 0 1 
