@@ -41,7 +41,7 @@ module collision #(parameter Num_blocks=12, parameter Num_pigs=3, parameter MAX_
     reg [4:0] loop_index;
     reg [8:0] block_width, block_height;
     reg signed [11:0] box_left, box_right, box_top, box_bottom;
-    always @* begin
+    always @(*) begin
         any_hit = 1'b0;
         block_pick = {Num_blocks{1'b0}};
         pig_pick = {Num_pigs{1'b0}};
