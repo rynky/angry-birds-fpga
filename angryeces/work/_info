@@ -9,27 +9,27 @@ z2
 cModel Technology
 Z0 dC:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces
 vcollision
-Z1 !s110 1795568351
+Z1 !s110 1795577440
 !i10b 1
-!s100 RTZzhOFSnZ=h<Q@1W293j1
+!s100 7KMfXZe[fJ@H]0Xz08iYQ3
 Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IzKUCGcm3aNJ^ZefH6P=KX2
+IGCJKQMM2F`YDf<3<;0W9f0
 Z3 VDg1SIo80bB@j0V0VzS_@n1
 R0
-Z4 w1795565628
+w1795576391
 8rtl/collision.v
 Frtl/collision.v
-!i122 0
-L0 5 138
-Z5 OV;L;2020.1;71
+!i122 5
+L0 1 131
+Z4 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z6 !s108 1795568351.000000
-!s107 sim/tb_projectile.v|rtl/collision.v|rtl/level_data.v|rtl/game_logic.v|
-Z7 !s90 -reportprogress|300|rtl/game_logic.v|rtl/level_data.v|rtl/collision.v|sim/tb_projectile.v|
+Z5 !s108 1795577440.000000
+!s107 sim/tb_obstacle_flash.v|rtl/collision.v|rtl/level_data.v|rtl/game_logic.v|
+Z6 !s90 -reportprogress|300|rtl/game_logic.v|rtl/level_data.v|rtl/collision.v|sim/tb_obstacle_flash.v|
 !i113 1
-Z8 tCvgOpt 0
+Z7 tCvgOpt 0
 vgame_logic
 R1
 !i10b 1
@@ -38,20 +38,20 @@ R2
 IeX:7gg;`<HLh?g89`SSGR2
 R3
 R0
-w1795568055
+w1795573730
 8rtl/game_logic.v
 Frtl/game_logic.v
-!i122 0
+!i122 5
 L0 1 565
-R5
+R4
 r1
 !s85 0
 31
+R5
+Z8 !s107 sim/tb_obstacle_flash.v|rtl/collision.v|rtl/level_data.v|rtl/game_logic.v|
 R6
-Z9 !s107 sim/tb_projectile.v|rtl/collision.v|rtl/level_data.v|rtl/game_logic.v|
-R7
 !i113 1
-R8
+R7
 vlevel_data
 R1
 !i10b 1
@@ -60,22 +60,66 @@ R2
 Inljl;ZoDITaURGZOMN>Uk2
 R3
 R0
-R4
+w1795565628
 8rtl/level_data.v
 Frtl/level_data.v
-!i122 0
+!i122 5
 L0 1 59
-R5
+R4
 r1
 !s85 0
 31
-R6
-R9
-R7
-!i113 1
+R5
 R8
-vtb_projectile
+R6
+!i113 1
+R7
+vtb_horizontal_scale
+!s110 1795577264
+!i10b 1
+!s100 JGSQ^NRFK[Jb48IJa2UKF1
+R2
+IWoeSE3XI3170nSdhE<<A61
+R3
+R0
+Z9 w1795576139
+8sim/tb_horizontal_scale.v
+Fsim/tb_horizontal_scale.v
+!i122 4
+L0 3 180
+R4
+r1
+!s85 0
+31
+!s108 1795577263.000000
+!s107 sim/tb_horizontal_scale.v|rtl/collision.v|rtl/level_data.v|rtl/game_logic.v|
+!s90 -reportprogress|300|rtl/game_logic.v|rtl/level_data.v|rtl/collision.v|sim/tb_horizontal_scale.v|
+!i113 1
+R7
+vtb_obstacle_flash
 R1
+!i10b 1
+!s100 8ZH6@j6@S9QS7C]9WDfG83
+R2
+ILkHL5nRgMZ4EQJ<1n_m=D0
+R3
+R0
+R9
+8sim/tb_obstacle_flash.v
+Fsim/tb_obstacle_flash.v
+!i122 5
+L0 3 235
+R4
+r1
+!s85 0
+31
+R5
+R8
+R6
+!i113 1
+R7
+vtb_projectile
+!s110 1795568351
 !i10b 1
 !s100 FN@l@3?>i^W4iNTI=RmeK3
 R2
@@ -87,12 +131,34 @@ w1795568227
 Fsim/tb_projectile.v
 !i122 0
 L0 3 253
-R5
+R4
 r1
 !s85 0
 31
-R6
-R9
-R7
+!s108 1795568351.000000
+!s107 sim/tb_projectile.v|rtl/collision.v|rtl/level_data.v|rtl/game_logic.v|
+!s90 -reportprogress|300|rtl/game_logic.v|rtl/level_data.v|rtl/collision.v|sim/tb_projectile.v|
 !i113 1
-R8
+R7
+vtb_vertical_scale
+!s110 1795577141
+!i10b 1
+!s100 `hV8zf6i>f9nT68DGdN731
+R2
+IN_JUIESiKAgO[Z>W:O`iO1
+R3
+R0
+R9
+8sim/tb_vertical_scale.v
+Fsim/tb_vertical_scale.v
+!i122 3
+L0 3 218
+R4
+r1
+!s85 0
+31
+!s108 1795577141.000000
+!s107 sim/tb_vertical_scale.v|rtl/collision.v|rtl/level_data.v|rtl/game_logic.v|
+!s90 -reportprogress|300|rtl/game_logic.v|rtl/level_data.v|rtl/collision.v|sim/tb_vertical_scale.v|
+!i113 1
+R7
