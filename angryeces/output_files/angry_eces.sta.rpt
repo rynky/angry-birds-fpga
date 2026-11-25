@@ -1,6 +1,6 @@
 Timing Analyzer report for angry_eces
-Tue Nov 24 13:02:19 2026
-Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+Tue Nov 24 21:13:35 2026
+Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
 ---------------------
@@ -60,35 +60,35 @@ Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2023  Intel Corporation. All rights reserved.
-Your use of Intel Corporation's design tools, logic functions 
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
-to the terms and conditions of the Intel Program License 
-Subscription Agreement, the Intel Quartus Prime License Agreement,
-the Intel FPGA IP License Agreement, or other applicable license
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
 agreement, including, without limitation, that your use is for
 the sole purpose of programming logic devices manufactured by
-Intel and sold by Intel or its authorized distributors.  Please
-refer to the applicable agreement for further details, at
-https://fpgasoftware.intel.com/eula.
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
 
 
 
-+--------------------------------------------------------------------------------+
-; Timing Analyzer Summary                                                        ;
-+-----------------------+--------------------------------------------------------+
-; Quartus Prime Version ; Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
-; Timing Analyzer       ; Legacy Timing Analyzer                                 ;
-; Revision Name         ; angry_eces                                             ;
-; Device Family         ; Cyclone V                                              ;
-; Device Name           ; 5CSEMA5F31C6                                           ;
-; Timing Models         ; Final                                                  ;
-; Delay Model           ; Combined                                               ;
-; Rise/Fall Delays      ; Enabled                                                ;
-+-----------------------+--------------------------------------------------------+
++---------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                         ;
++-----------------------+---------------------------------------------------------+
+; Quartus Prime Version ; Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
+; Timing Analyzer       ; Legacy Timing Analyzer                                  ;
+; Revision Name         ; angry_eces                                              ;
+; Device Family         ; Cyclone V                                               ;
+; Device Name           ; 5CSEMA5F31C6                                            ;
+; Timing Models         ; Final                                                   ;
+; Delay Model           ; Combined                                                ;
+; Rise/Fall Delays      ; Enabled                                                 ;
++-----------------------+---------------------------------------------------------+
 
 
 +------------------------------------------+
@@ -96,19 +96,29 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 12          ;
-; Maximum allowed            ; 6           ;
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 1.83        ;
-; Maximum used               ; 6           ;
+; Average used               ; 3.98        ;
+; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;  17.1%      ;
-;     Processor 3            ;  17.0%      ;
-;     Processor 4            ;  17.0%      ;
-;     Processor 5            ;  15.9%      ;
-;     Processor 6            ;  15.9%      ;
+;     Processor 2            ;  22.0%      ;
+;     Processor 3            ;  21.9%      ;
+;     Processor 4            ;  21.8%      ;
+;     Processor 5            ;  19.4%      ;
+;     Processor 6            ;  19.4%      ;
+;     Processor 7            ;  19.4%      ;
+;     Processor 8            ;  19.4%      ;
+;     Processor 9            ;  19.4%      ;
+;     Processor 10           ;  19.4%      ;
+;     Processor 11           ;  19.4%      ;
+;     Processor 12           ;  19.4%      ;
+;     Processor 13           ;  19.4%      ;
+;     Processor 14           ;  19.4%      ;
+;     Processor 15           ;  19.4%      ;
+;     Processor 16           ;  19.3%      ;
 +----------------------------+-------------+
 
 
@@ -117,7 +127,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------+--------+--------------------------+
 ; SDC File Path ; Status ; Read at                  ;
 +---------------+--------+--------------------------+
-; DE1_SoC.sdc   ; OK     ; Tue Nov 24 13:02:02 2026 ;
+; DE1_SoC.sdc   ; OK     ; Tue Nov 24 21:13:30 2026 ;
 +---------------+--------+--------------------------+
 
 
@@ -1188,23 +1198,23 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +--------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
-    Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Tue Nov 24 13:01:51 2026
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Processing started: Tue Nov 24 21:13:29 2026
 Info: Command: quartus_sta angry_eces -c angry_eces
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
 Info (332104): Reading SDC File: 'DE1_SoC.sdc'
 Info (332151): Clock uncertainty is not calculated until you update the timing netlist.
-Warning (332174): Ignored filter at DE1_SoC.sdc(7): VGA_B[*] could not be matched with a register File: W:/angryeces-fsm-slingshot/DE1_SoC.sdc Line: 7
-Warning (332174): Ignored filter at DE1_SoC.sdc(7): VGA_G[*] could not be matched with a register File: W:/angryeces-fsm-slingshot/DE1_SoC.sdc Line: 7
-Warning (332174): Ignored filter at DE1_SoC.sdc(7): VGA_R[*] could not be matched with a register File: W:/angryeces-fsm-slingshot/DE1_SoC.sdc Line: 7
-Warning (332049): Ignored set_multicycle_path at DE1_SoC.sdc(7): Argument <to> is an empty collection File: W:/angryeces-fsm-slingshot/DE1_SoC.sdc Line: 7
-    Info (332050): set_multicycle_path -setup -end 2 -from [get_registers {*u_vga|h[*] *u_vga|v[*]}] -to [get_registers {VGA_R[*] VGA_G[*] VGA_B[*]}] File: W:/angryeces-fsm-slingshot/DE1_SoC.sdc Line: 7
-Warning (332049): Ignored set_multicycle_path at DE1_SoC.sdc(8): Argument <to> is an empty collection File: W:/angryeces-fsm-slingshot/DE1_SoC.sdc Line: 8
-    Info (332050): set_multicycle_path -hold  -end 1 -from [get_registers {*u_vga|h[*] *u_vga|v[*]}] -to [get_registers {VGA_R[*] VGA_G[*] VGA_B[*]}] File: W:/angryeces-fsm-slingshot/DE1_SoC.sdc Line: 8
+Warning (332174): Ignored filter at DE1_SoC.sdc(7): VGA_B[*] could not be matched with a register File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/DE1_SoC.sdc Line: 7
+Warning (332174): Ignored filter at DE1_SoC.sdc(7): VGA_G[*] could not be matched with a register File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/DE1_SoC.sdc Line: 7
+Warning (332174): Ignored filter at DE1_SoC.sdc(7): VGA_R[*] could not be matched with a register File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/DE1_SoC.sdc Line: 7
+Warning (332049): Ignored set_multicycle_path at DE1_SoC.sdc(7): Argument <to> is an empty collection File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/DE1_SoC.sdc Line: 7
+    Info (332050): set_multicycle_path -setup -end 2 -from [get_registers {*u_vga|h[*] *u_vga|v[*]}] -to [get_registers {VGA_R[*] VGA_G[*] VGA_B[*]}] File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/DE1_SoC.sdc Line: 7
+Warning (332049): Ignored set_multicycle_path at DE1_SoC.sdc(8): Argument <to> is an empty collection File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/DE1_SoC.sdc Line: 8
+    Info (332050): set_multicycle_path -hold  -end 1 -from [get_registers {*u_vga|h[*] *u_vga|v[*]}] -to [get_registers {VGA_R[*] VGA_G[*] VGA_B[*]}] File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/DE1_SoC.sdc Line: 8
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
@@ -1309,9 +1319,9 @@ Info (332114): Report Metastability: Found 5 synchronizer chains.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 5491 megabytes
-    Info: Processing ended: Tue Nov 24 13:02:19 2026
-    Info: Elapsed time: 00:00:28
-    Info: Total CPU time (on all processors): 00:00:26
+    Info: Peak virtual memory: 5551 megabytes
+    Info: Processing ended: Tue Nov 24 21:13:35 2026
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:19
 
 

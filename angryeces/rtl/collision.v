@@ -22,6 +22,8 @@ module collision #(parameter Num_blocks=12, parameter Num_pigs=3, parameter MAX_
     output wire spent, // last health used
     output reg [1:0] health
 );
+    parameter OBSTACLE_IDLE = 2'd0, OBSTACLE_FLY = 2'd1, OBSTACLE_FLASH = 2'd2, OBSTACLE_REMOVE = 2'd3;
+
     reg [1:0] col_state;
     reg [4:0] flash_timer;
     reg [Num_blocks-1:0] target_block;
@@ -87,7 +89,6 @@ module collision #(parameter Num_blocks=12, parameter Num_pigs=3, parameter MAX_
     assign pig_kill = target_pig & {Num_pigs{(col_state == OBSTACLE_REMOVE)}};
     assign spent = (col_state == OBSTACLE_REMOVE) && (health == 2'd1);
 
-    parameter OBSTACLE_IDLE = 2'd0, OBSTACLE_FLY = 2'd1, OBSTACLE_FLASH = 2'd2, OBSTACLE_REMOVE = 2'd3;
     always @(posedge clk) begin
         if (reset) begin
             col_state <= OBSTACLE_IDLE;

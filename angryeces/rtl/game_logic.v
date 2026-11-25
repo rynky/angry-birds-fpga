@@ -160,7 +160,7 @@ module game_logic #(parameter Num_blocks=12,parameter Num_pigs=3,parameter Num_d
         endcase
     end
 
-    localparam SLING_STEPS = 9;                                // slingshot input range 0..9
+    localparam SLING_STEPS = 9; // slingshot input range 0..9
     reg [3:0] clamped_power;
     always @* begin
         if (power > SLING_STEPS) clamped_power = SLING_STEPS[3:0];
@@ -168,10 +168,10 @@ module game_logic #(parameter Num_blocks=12,parameter Num_pigs=3,parameter Num_d
     end
 
     // each slingshot step adds full_power/9 of power: 0 -> 0, 9 -> full_power
-    wire [15:0] power_ninths = clamped_power * full_power;     // 0..135 (power in 1/9 units)
+    wire [15:0] power_ninths = clamped_power * full_power; // 0..135 (power in 1/9 units)
     wire [15:0] power_product = power_ninths * 16'd180;
     wire [8:0] speed_x = 9'd96 + power_product / (SLING_STEPS * full_power);   // 96 (step 0) .. 276 (step 9)
-    localparam [8:0] SPEED_Y = 9'd276;                         // fixed: arc height independent of power
+    localparam [8:0] SPEED_Y = 9'd276;
     wire [17:0] velocity_x_product = speed_x * horizontal_weight;
     wire [17:0] velocity_y_product = SPEED_Y * vertical_weight;
     wire signed [15:0] launch_velocity_x = $signed({6'd0, velocity_x_product[17:8]});

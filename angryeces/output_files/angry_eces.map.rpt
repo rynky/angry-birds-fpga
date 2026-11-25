@@ -1,6 +1,6 @@
 Analysis & Synthesis report for angry_eces
-Tue Nov 24 12:57:52 2026
-Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+Tue Nov 24 21:09:27 2026
+Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
 ---------------------
@@ -78,44 +78,44 @@ Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2023  Intel Corporation. All rights reserved.
-Your use of Intel Corporation's design tools, logic functions 
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
-to the terms and conditions of the Intel Program License 
-Subscription Agreement, the Intel Quartus Prime License Agreement,
-the Intel FPGA IP License Agreement, or other applicable license
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
 agreement, including, without limitation, that your use is for
 the sole purpose of programming logic devices manufactured by
-Intel and sold by Intel or its authorized distributors.  Please
-refer to the applicable agreement for further details, at
-https://fpgasoftware.intel.com/eula.
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
 
 
 
-+----------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                     ;
-+---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Nov 24 12:57:51 2026          ;
-; Quartus Prime Version           ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
-; Revision Name                   ; angry_eces                                     ;
-; Top-level Entity Name           ; angry_eces_top                                 ;
-; Family                          ; Cyclone V                                      ;
-; Logic utilization (in ALMs)     ; N/A                                            ;
-; Total registers                 ; 741                                            ;
-; Total pins                      ; 132                                            ;
-; Total virtual pins              ; 0                                              ;
-; Total block memory bits         ; 2,211,840                                      ;
-; Total DSP Blocks                ; 11                                             ;
-; Total HSSI RX PCSs              ; 0                                              ;
-; Total HSSI PMA RX Deserializers ; 0                                              ;
-; Total HSSI TX PCSs              ; 0                                              ;
-; Total HSSI PMA TX Serializers   ; 0                                              ;
-; Total PLLs                      ; 0                                              ;
-; Total DLLs                      ; 0                                              ;
-+---------------------------------+------------------------------------------------+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++---------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Tue Nov 24 21:09:27 2026           ;
+; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
+; Revision Name                   ; angry_eces                                      ;
+; Top-level Entity Name           ; angry_eces_top                                  ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 741                                             ;
+; Total pins                      ; 132                                             ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 2,211,840                                       ;
+; Total DSP Blocks                ; 11                                              ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 0                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -210,11 +210,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 12          ;
-; Maximum allowed            ; 6           ;
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 6           ;
+; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
@@ -223,63 +223,66 @@ https://fpgasoftware.intel.com/eula.
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
 ;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
+;     Processors 9-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                          ;
-+------------------------------------------------+-----------------+-------------------------------------------------------+--------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path               ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                               ; Library ;
-+------------------------------------------------+-----------------+-------------------------------------------------------+--------------------------------------------------------------------------------------------+---------+
-; rtl/collision.v                                ; yes             ; User Verilog HDL File                                 ; W:/angryeces-fsm-slingshot/rtl/collision.v                                                 ;         ;
-; rtl/angry_eces_top.v                           ; yes             ; User Verilog HDL File                                 ; W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v                                            ;         ;
-; rtl/vga_timing.v                               ; yes             ; User Verilog HDL File                                 ; W:/angryeces-fsm-slingshot/rtl/vga_timing.v                                                ;         ;
-; rtl/slingshot_rx.v                             ; yes             ; User Verilog HDL File                                 ; W:/angryeces-fsm-slingshot/rtl/slingshot_rx.v                                              ;         ;
-; rtl/score_tracker.v                            ; yes             ; User Verilog HDL File                                 ; W:/angryeces-fsm-slingshot/rtl/score_tracker.v                                             ;         ;
-; rtl/char_to_7seg.v                             ; yes             ; User Verilog HDL File                                 ; W:/angryeces-fsm-slingshot/rtl/char_to_7seg.v                                              ;         ;
-; rtl/game_logic.v                               ; yes             ; User Verilog HDL File                                 ; W:/angryeces-fsm-slingshot/rtl/game_logic.v                                                ;         ;
-; rtl/level_data.v                               ; yes             ; User Verilog HDL File                                 ; W:/angryeces-fsm-slingshot/rtl/level_data.v                                                ;         ;
-; rtl/renderer.v                                 ; yes             ; User Verilog HDL File                                 ; W:/angryeces-fsm-slingshot/rtl/renderer.v                                                  ;         ;
-; rtl/screen_rom.v                               ; yes             ; User Verilog HDL File                                 ; W:/angryeces-fsm-slingshot/rtl/screen_rom.v                                                ;         ;
-; rtl/sprite_rom.v                               ; yes             ; User Verilog HDL File                                 ; W:/angryeces-fsm-slingshot/rtl/sprite_rom.v                                                ;         ;
-; rom/screens.hex                                ; yes             ; Auto-Found Hexadecimal (Intel-Format) File            ; W:/angryeces-fsm-slingshot/rom/screens.hex                                                 ;         ;
-; altsyncram.tdf                                 ; yes             ; Megafunction                                          ; c:/intelfpga/quartus_prime_lite_23.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
-; stratix_ram_block.inc                          ; yes             ; Megafunction                                          ; c:/intelfpga/quartus_prime_lite_23.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
-; lpm_mux.inc                                    ; yes             ; Megafunction                                          ; c:/intelfpga/quartus_prime_lite_23.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
-; lpm_decode.inc                                 ; yes             ; Megafunction                                          ; c:/intelfpga/quartus_prime_lite_23.1/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
-; aglobal231.inc                                 ; yes             ; Megafunction                                          ; c:/intelfpga/quartus_prime_lite_23.1/quartus/libraries/megafunctions/aglobal231.inc        ;         ;
-; a_rdenreg.inc                                  ; yes             ; Megafunction                                          ; c:/intelfpga/quartus_prime_lite_23.1/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
-; altrom.inc                                     ; yes             ; Megafunction                                          ; c:/intelfpga/quartus_prime_lite_23.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
-; altram.inc                                     ; yes             ; Megafunction                                          ; c:/intelfpga/quartus_prime_lite_23.1/quartus/libraries/megafunctions/altram.inc            ;         ;
-; altdpram.inc                                   ; yes             ; Megafunction                                          ; c:/intelfpga/quartus_prime_lite_23.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
-; db/altsyncram_vvd1.tdf                         ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/altsyncram_vvd1.tdf                                          ;         ;
-; db/angry_eces.ram0_screen_rom_a38c24e4.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; W:/angryeces-fsm-slingshot/db/angry_eces.ram0_screen_rom_a38c24e4.hdl.mif                  ;         ;
-; db/decode_q2a.tdf                              ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/decode_q2a.tdf                                               ;         ;
-; db/mux_sib.tdf                                 ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/mux_sib.tdf                                                  ;         ;
-; db/altsyncram_1rd1.tdf                         ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/altsyncram_1rd1.tdf                                          ;         ;
-; db/angry_eces.ram0_sprite_rom_85719c62.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; W:/angryeces-fsm-slingshot/db/angry_eces.ram0_sprite_rom_85719c62.hdl.mif                  ;         ;
-; db/altsyncram_k0e1.tdf                         ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/altsyncram_k0e1.tdf                                          ;         ;
-; db/angry_eces.ram0_sprite_rom_51a2cdc6.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; W:/angryeces-fsm-slingshot/db/angry_eces.ram0_sprite_rom_51a2cdc6.hdl.mif                  ;         ;
-; db/decode_u0a.tdf                              ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/decode_u0a.tdf                                               ;         ;
-; db/mux_0hb.tdf                                 ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/mux_0hb.tdf                                                  ;         ;
-; db/altsyncram_7sd1.tdf                         ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/altsyncram_7sd1.tdf                                          ;         ;
-; db/angry_eces.ram0_sprite_rom_6334b5c7.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; W:/angryeces-fsm-slingshot/db/angry_eces.ram0_sprite_rom_6334b5c7.hdl.mif                  ;         ;
-; db/altsyncram_ptd1.tdf                         ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/altsyncram_ptd1.tdf                                          ;         ;
-; db/angry_eces.ram0_sprite_rom_788db80d.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; W:/angryeces-fsm-slingshot/db/angry_eces.ram0_sprite_rom_788db80d.hdl.mif                  ;         ;
-; lpm_divide.tdf                                 ; yes             ; Megafunction                                          ; c:/intelfpga/quartus_prime_lite_23.1/quartus/libraries/megafunctions/lpm_divide.tdf        ;         ;
-; abs_divider.inc                                ; yes             ; Megafunction                                          ; c:/intelfpga/quartus_prime_lite_23.1/quartus/libraries/megafunctions/abs_divider.inc       ;         ;
-; sign_div_unsign.inc                            ; yes             ; Megafunction                                          ; c:/intelfpga/quartus_prime_lite_23.1/quartus/libraries/megafunctions/sign_div_unsign.inc   ;         ;
-; db/lpm_divide_h3m.tdf                          ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/lpm_divide_h3m.tdf                                           ;         ;
-; db/sign_div_unsign_klh.tdf                     ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/sign_div_unsign_klh.tdf                                      ;         ;
-; db/alt_u_div_eve.tdf                           ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/alt_u_div_eve.tdf                                            ;         ;
-; db/lpm_divide_ebm.tdf                          ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/lpm_divide_ebm.tdf                                           ;         ;
-; db/lpm_divide_hbm.tdf                          ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/lpm_divide_hbm.tdf                                           ;         ;
-; db/sign_div_unsign_nlh.tdf                     ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/sign_div_unsign_nlh.tdf                                      ;         ;
-; db/alt_u_div_kve.tdf                           ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/alt_u_div_kve.tdf                                            ;         ;
-; db/lpm_divide_obm.tdf                          ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/lpm_divide_obm.tdf                                           ;         ;
-; db/sign_div_unsign_ulh.tdf                     ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/sign_div_unsign_ulh.tdf                                      ;         ;
-; db/alt_u_div_20f.tdf                           ; yes             ; Auto-Generated Megafunction                           ; W:/angryeces-fsm-slingshot/db/alt_u_div_20f.tdf                                            ;         ;
-+------------------------------------------------+-----------------+-------------------------------------------------------+--------------------------------------------------------------------------------------------+---------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                ;
++------------------------------------------------+-----------------+-------------------------------------------------------+--------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path               ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                                     ; Library ;
++------------------------------------------------+-----------------+-------------------------------------------------------+--------------------------------------------------------------------------------------------------+---------+
+; rtl/collision.v                                ; yes             ; User Verilog HDL File                                 ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/collision.v                                ;         ;
+; rtl/angry_eces_top.v                           ; yes             ; User Verilog HDL File                                 ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v                           ;         ;
+; rtl/vga_timing.v                               ; yes             ; User Verilog HDL File                                 ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/vga_timing.v                               ;         ;
+; rtl/slingshot_rx.v                             ; yes             ; User Verilog HDL File                                 ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/slingshot_rx.v                             ;         ;
+; rtl/score_tracker.v                            ; yes             ; User Verilog HDL File                                 ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/score_tracker.v                            ;         ;
+; rtl/char_to_7seg.v                             ; yes             ; User Verilog HDL File                                 ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/char_to_7seg.v                             ;         ;
+; rtl/game_logic.v                               ; yes             ; User Verilog HDL File                                 ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/game_logic.v                               ;         ;
+; rtl/level_data.v                               ; yes             ; User Verilog HDL File                                 ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/level_data.v                               ;         ;
+; rtl/renderer.v                                 ; yes             ; User Verilog HDL File                                 ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v                                 ;         ;
+; rtl/screen_rom.v                               ; yes             ; User Verilog HDL File                                 ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/screen_rom.v                               ;         ;
+; rtl/sprite_rom.v                               ; yes             ; User Verilog HDL File                                 ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v                               ;         ;
+; rom/screens.hex                                ; yes             ; Auto-Found Hexadecimal (Intel-Format) File            ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rom/screens.hex                                ;         ;
+; altsyncram.tdf                                 ; yes             ; Megafunction                                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altsyncram.tdf                            ;         ;
+; stratix_ram_block.inc                          ; yes             ; Megafunction                                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/stratix_ram_block.inc                     ;         ;
+; lpm_mux.inc                                    ; yes             ; Megafunction                                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_mux.inc                               ;         ;
+; lpm_decode.inc                                 ; yes             ; Megafunction                                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_decode.inc                            ;         ;
+; aglobal251.inc                                 ; yes             ; Megafunction                                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/aglobal251.inc                            ;         ;
+; a_rdenreg.inc                                  ; yes             ; Megafunction                                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/a_rdenreg.inc                             ;         ;
+; altrom.inc                                     ; yes             ; Megafunction                                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altrom.inc                                ;         ;
+; altram.inc                                     ; yes             ; Megafunction                                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altram.inc                                ;         ;
+; altdpram.inc                                   ; yes             ; Megafunction                                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/altdpram.inc                              ;         ;
+; db/altsyncram_vvd1.tdf                         ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/altsyncram_vvd1.tdf                         ;         ;
+; db/angry_eces.ram0_screen_rom_a38c24e4.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/angry_eces.ram0_screen_rom_a38c24e4.hdl.mif ;         ;
+; db/decode_q2a.tdf                              ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/decode_q2a.tdf                              ;         ;
+; db/mux_sib.tdf                                 ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/mux_sib.tdf                                 ;         ;
+; db/altsyncram_1rd1.tdf                         ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/altsyncram_1rd1.tdf                         ;         ;
+; db/angry_eces.ram0_sprite_rom_85719c62.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/angry_eces.ram0_sprite_rom_85719c62.hdl.mif ;         ;
+; db/altsyncram_k0e1.tdf                         ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/altsyncram_k0e1.tdf                         ;         ;
+; db/angry_eces.ram0_sprite_rom_51a2cdc6.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/angry_eces.ram0_sprite_rom_51a2cdc6.hdl.mif ;         ;
+; db/decode_u0a.tdf                              ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/decode_u0a.tdf                              ;         ;
+; db/mux_0hb.tdf                                 ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/mux_0hb.tdf                                 ;         ;
+; db/altsyncram_7sd1.tdf                         ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/altsyncram_7sd1.tdf                         ;         ;
+; db/angry_eces.ram0_sprite_rom_6334b5c7.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/angry_eces.ram0_sprite_rom_6334b5c7.hdl.mif ;         ;
+; db/altsyncram_ptd1.tdf                         ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/altsyncram_ptd1.tdf                         ;         ;
+; db/angry_eces.ram0_sprite_rom_788db80d.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/angry_eces.ram0_sprite_rom_788db80d.hdl.mif ;         ;
+; lpm_divide.tdf                                 ; yes             ; Megafunction                                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/lpm_divide.tdf                            ;         ;
+; abs_divider.inc                                ; yes             ; Megafunction                                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/abs_divider.inc                           ;         ;
+; sign_div_unsign.inc                            ; yes             ; Megafunction                                          ; c:/altera_lite/25.1std/quartus/libraries/megafunctions/sign_div_unsign.inc                       ;         ;
+; db/lpm_divide_h3m.tdf                          ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/lpm_divide_h3m.tdf                          ;         ;
+; db/sign_div_unsign_klh.tdf                     ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/sign_div_unsign_klh.tdf                     ;         ;
+; db/alt_u_div_eve.tdf                           ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/alt_u_div_eve.tdf                           ;         ;
+; db/lpm_divide_ebm.tdf                          ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/lpm_divide_ebm.tdf                          ;         ;
+; db/lpm_divide_hbm.tdf                          ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/lpm_divide_hbm.tdf                          ;         ;
+; db/sign_div_unsign_nlh.tdf                     ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/sign_div_unsign_nlh.tdf                     ;         ;
+; db/alt_u_div_kve.tdf                           ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/alt_u_div_kve.tdf                           ;         ;
+; db/lpm_divide_obm.tdf                          ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/lpm_divide_obm.tdf                          ;         ;
+; db/sign_div_unsign_ulh.tdf                     ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/sign_div_unsign_ulh.tdf                     ;         ;
+; db/alt_u_div_20f.tdf                           ; yes             ; Auto-Generated Megafunction                           ; C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/alt_u_div_20f.tdf                           ;         ;
++------------------------------------------------+-----------------+-------------------------------------------------------+--------------------------------------------------------------------------------------------------+---------+
 
 
 +--------------------------------------------------------------+
@@ -434,16 +437,16 @@ Encoding Type:  One-Hot
 
 
 Encoding Type:  One-Hot
-+--------------------------------------------------------------------------------------------------+
-; State Machine - |angry_eces_top|game_logic:u_game|collision:collision_inst|col_state             ;
-+--------------------+--------------------+-------------------+-----------------+------------------+
-; Name               ; col_state.S_REMOVE ; col_state.S_FLASH ; col_state.S_FLY ; col_state.S_IDLE ;
-+--------------------+--------------------+-------------------+-----------------+------------------+
-; col_state.S_IDLE   ; 0                  ; 0                 ; 0               ; 0                ;
-; col_state.S_FLY    ; 0                  ; 0                 ; 1               ; 1                ;
-; col_state.S_FLASH  ; 0                  ; 1                 ; 0               ; 1                ;
-; col_state.S_REMOVE ; 1                  ; 0                 ; 0               ; 1                ;
-+--------------------+--------------------+-------------------+-----------------+------------------+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |angry_eces_top|game_logic:u_game|collision:collision_inst|col_state                                                ;
++---------------------------+---------------------------+--------------------------+------------------------+-------------------------+
+; Name                      ; col_state.OBSTACLE_REMOVE ; col_state.OBSTACLE_FLASH ; col_state.OBSTACLE_FLY ; col_state.OBSTACLE_IDLE ;
++---------------------------+---------------------------+--------------------------+------------------------+-------------------------+
+; col_state.OBSTACLE_IDLE   ; 0                         ; 0                        ; 0                      ; 0                       ;
+; col_state.OBSTACLE_FLY    ; 0                         ; 0                        ; 1                      ; 1                       ;
+; col_state.OBSTACLE_FLASH  ; 0                         ; 1                        ; 0                      ; 1                       ;
+; col_state.OBSTACLE_REMOVE ; 1                         ; 0                        ; 0                      ; 1                       ;
++---------------------------+---------------------------+--------------------------+------------------------+-------------------------+
 
 
 Encoding Type:  One-Hot
@@ -1765,7 +1768,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:33     ;
+; Top            ; 00:00:15     ;
 +----------------+--------------+
 
 
@@ -1774,105 +1777,108 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
-    Info: Processing started: Tue Nov 24 12:56:44 2026
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Processing started: Tue Nov 24 21:06:33 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off angry_eces -c angry_eces
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/collision.v
-    Info (12023): Found entity 1: collision File: W:/angryeces-fsm-slingshot/rtl/collision.v Line: 5
+    Info (12023): Found entity 1: collision File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/collision.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/angry_eces_top.v
-    Info (12023): Found entity 1: angry_eces_top File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 1
+    Info (12023): Found entity 1: angry_eces_top File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/vga_timing.v
-    Info (12023): Found entity 1: vga_timing File: W:/angryeces-fsm-slingshot/rtl/vga_timing.v Line: 1
+    Info (12023): Found entity 1: vga_timing File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/vga_timing.v Line: 1
 Info (12021): Found 2 design units, including 2 entities, in source file rtl/slingshot_rx.v
-    Info (12023): Found entity 1: slingshot_rx File: W:/angryeces-fsm-slingshot/rtl/slingshot_rx.v Line: 1
-    Info (12023): Found entity 2: ascii_to_hex File: W:/angryeces-fsm-slingshot/rtl/slingshot_rx.v Line: 95
+    Info (12023): Found entity 1: slingshot_rx File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/slingshot_rx.v Line: 1
+    Info (12023): Found entity 2: ascii_to_hex File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/slingshot_rx.v Line: 95
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/score_tracker.v
-    Info (12023): Found entity 1: score_tracker File: W:/angryeces-fsm-slingshot/rtl/score_tracker.v Line: 1
+    Info (12023): Found entity 1: score_tracker File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/score_tracker.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/char_to_7seg.v
-    Info (12023): Found entity 1: char_to_7seg File: W:/angryeces-fsm-slingshot/rtl/char_to_7seg.v Line: 2
-Warning (10259): Verilog HDL error at game_logic.v(81): constant value overflow File: W:/angryeces-fsm-slingshot/rtl/game_logic.v Line: 81
+    Info (12023): Found entity 1: char_to_7seg File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/char_to_7seg.v Line: 2
+Warning (10259): Verilog HDL error at game_logic.v(81): constant value overflow File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/game_logic.v Line: 81
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/game_logic.v
-    Info (12023): Found entity 1: game_logic File: W:/angryeces-fsm-slingshot/rtl/game_logic.v Line: 1
+    Info (12023): Found entity 1: game_logic File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/game_logic.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/level_data.v
-    Info (12023): Found entity 1: level_data File: W:/angryeces-fsm-slingshot/rtl/level_data.v Line: 1
+    Info (12023): Found entity 1: level_data File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/level_data.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/renderer.v
-    Info (12023): Found entity 1: renderer File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 1
+    Info (12023): Found entity 1: renderer File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/screen_rom.v
-    Info (12023): Found entity 1: screen_rom File: W:/angryeces-fsm-slingshot/rtl/screen_rom.v Line: 1
+    Info (12023): Found entity 1: screen_rom File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/screen_rom.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/sprite_rom.v
-    Info (12023): Found entity 1: sprite_rom File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 1
-Warning (10222): Verilog HDL Parameter Declaration warning at slingshot_rx.v(10): Parameter Declaration in module "slingshot_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: W:/angryeces-fsm-slingshot/rtl/slingshot_rx.v Line: 10
-Warning (10222): Verilog HDL Parameter Declaration warning at slingshot_rx.v(27): Parameter Declaration in module "slingshot_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: W:/angryeces-fsm-slingshot/rtl/slingshot_rx.v Line: 27
+    Info (12023): Found entity 1: sprite_rom File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 1
+Warning (10222): Verilog HDL Parameter Declaration warning at collision.v(30): Parameter Declaration in module "collision" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/collision.v Line: 30
+Warning (10222): Verilog HDL Parameter Declaration warning at collision.v(31): Parameter Declaration in module "collision" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/collision.v Line: 31
+Warning (10222): Verilog HDL Parameter Declaration warning at collision.v(90): Parameter Declaration in module "collision" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/collision.v Line: 90
+Warning (10222): Verilog HDL Parameter Declaration warning at slingshot_rx.v(10): Parameter Declaration in module "slingshot_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/slingshot_rx.v Line: 10
+Warning (10222): Verilog HDL Parameter Declaration warning at slingshot_rx.v(27): Parameter Declaration in module "slingshot_rx" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/slingshot_rx.v Line: 27
 Info (12127): Elaborating entity "angry_eces_top" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at angry_eces_top.v(164): truncated value with size 10 to match size of target (4) File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 164
-Warning (10230): Verilog HDL assignment warning at angry_eces_top.v(165): truncated value with size 10 to match size of target (4) File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 165
-Info (12128): Elaborating entity "vga_timing" for hierarchy "vga_timing:u_vga" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 64
-Info (12128): Elaborating entity "slingshot_rx" for hierarchy "slingshot_rx:u_sling" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 68
-Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(38): truncated value with size 32 to match size of target (13) File: W:/angryeces-fsm-slingshot/rtl/slingshot_rx.v Line: 38
-Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(45): truncated value with size 32 to match size of target (13) File: W:/angryeces-fsm-slingshot/rtl/slingshot_rx.v Line: 45
-Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(52): truncated value with size 32 to match size of target (13) File: W:/angryeces-fsm-slingshot/rtl/slingshot_rx.v Line: 52
-Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(58): truncated value with size 32 to match size of target (13) File: W:/angryeces-fsm-slingshot/rtl/slingshot_rx.v Line: 58
-Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(63): truncated value with size 32 to match size of target (4) File: W:/angryeces-fsm-slingshot/rtl/slingshot_rx.v Line: 63
-Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(67): truncated value with size 32 to match size of target (13) File: W:/angryeces-fsm-slingshot/rtl/slingshot_rx.v Line: 67
-Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(80): truncated value with size 32 to match size of target (13) File: W:/angryeces-fsm-slingshot/rtl/slingshot_rx.v Line: 80
-Info (12128): Elaborating entity "ascii_to_hex" for hierarchy "slingshot_rx:u_sling|ascii_to_hex:ascii_decoder" File: W:/angryeces-fsm-slingshot/rtl/slingshot_rx.v Line: 91
-Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(105): truncated value with size 8 to match size of target (4) File: W:/angryeces-fsm-slingshot/rtl/slingshot_rx.v Line: 105
-Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(108): truncated value with size 8 to match size of target (4) File: W:/angryeces-fsm-slingshot/rtl/slingshot_rx.v Line: 108
-Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(111): truncated value with size 8 to match size of target (4) File: W:/angryeces-fsm-slingshot/rtl/slingshot_rx.v Line: 111
-Info (12128): Elaborating entity "game_logic" for hierarchy "game_logic:u_game" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 116
-Warning (10230): Verilog HDL assignment warning at game_logic.v(45): truncated value with size 32 to match size of target (16) File: W:/angryeces-fsm-slingshot/rtl/game_logic.v Line: 45
-Warning (10230): Verilog HDL assignment warning at game_logic.v(46): truncated value with size 32 to match size of target (16) File: W:/angryeces-fsm-slingshot/rtl/game_logic.v Line: 46
-Warning (10036): Verilog HDL or VHDL warning at game_logic.v(208): object "other_width" assigned a value but never read File: W:/angryeces-fsm-slingshot/rtl/game_logic.v Line: 208
-Warning (10230): Verilog HDL assignment warning at game_logic.v(79): truncated value with size 26 to match size of target (14) File: W:/angryeces-fsm-slingshot/rtl/game_logic.v Line: 79
-Warning (10230): Verilog HDL assignment warning at game_logic.v(171): truncated value with size 32 to match size of target (16) File: W:/angryeces-fsm-slingshot/rtl/game_logic.v Line: 171
-Warning (10230): Verilog HDL assignment warning at game_logic.v(173): truncated value with size 32 to match size of target (9) File: W:/angryeces-fsm-slingshot/rtl/game_logic.v Line: 173
-Info (12128): Elaborating entity "level_data" for hierarchy "game_logic:u_game|level_data:gen_level_data[0].level_data_inst" File: W:/angryeces-fsm-slingshot/rtl/game_logic.v Line: 119
-Info (12128): Elaborating entity "collision" for hierarchy "game_logic:u_game|collision:collision_inst" File: W:/angryeces-fsm-slingshot/rtl/game_logic.v Line: 135
-Warning (10230): Verilog HDL assignment warning at collision.v(106): truncated value with size 32 to match size of target (2) File: W:/angryeces-fsm-slingshot/rtl/collision.v Line: 106
-Warning (10230): Verilog HDL assignment warning at collision.v(113): truncated value with size 32 to match size of target (2) File: W:/angryeces-fsm-slingshot/rtl/collision.v Line: 113
-Info (12128): Elaborating entity "score_tracker" for hierarchy "score_tracker:u_score" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 120
-Info (12128): Elaborating entity "renderer" for hierarchy "renderer:u_draw" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 140
-Warning (10230): Verilog HDL assignment warning at renderer.v(153): truncated value with size 8 to match size of target (3) File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 153
-Warning (10230): Verilog HDL assignment warning at renderer.v(153): truncated value with size 9 to match size of target (7) File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 153
-Warning (10230): Verilog HDL assignment warning at renderer.v(155): truncated value with size 8 to match size of target (3) File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 155
-Warning (10230): Verilog HDL assignment warning at renderer.v(155): truncated value with size 9 to match size of target (7) File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 155
-Warning (10230): Verilog HDL assignment warning at renderer.v(157): truncated value with size 8 to match size of target (3) File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 157
-Warning (10230): Verilog HDL assignment warning at renderer.v(157): truncated value with size 9 to match size of target (7) File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 157
-Warning (10230): Verilog HDL assignment warning at renderer.v(159): truncated value with size 8 to match size of target (3) File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 159
-Warning (10230): Verilog HDL assignment warning at renderer.v(159): truncated value with size 9 to match size of target (7) File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 159
-Warning (10230): Verilog HDL assignment warning at renderer.v(161): truncated value with size 8 to match size of target (3) File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 161
-Warning (10230): Verilog HDL assignment warning at renderer.v(161): truncated value with size 9 to match size of target (7) File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 161
-Warning (10230): Verilog HDL assignment warning at renderer.v(163): truncated value with size 8 to match size of target (3) File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 163
-Warning (10230): Verilog HDL assignment warning at renderer.v(163): truncated value with size 9 to match size of target (7) File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 163
-Info (12128): Elaborating entity "sprite_rom" for hierarchy "renderer:u_draw|sprite_rom:wood_rom_inst" File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 77
-Warning (10030): Net "mem.data_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 10
-Warning (10030): Net "mem.waddr_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 10
-Warning (10030): Net "mem.we_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 10
-Info (12128): Elaborating entity "sprite_rom" for hierarchy "renderer:u_draw|sprite_rom:pig_rom_inst" File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 101
-Warning (10030): Net "mem.data_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 10
-Warning (10030): Net "mem.waddr_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 10
-Warning (10030): Net "mem.we_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 10
-Info (12128): Elaborating entity "sprite_rom" for hierarchy "renderer:u_draw|sprite_rom:bird_rom_inst" File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 127
-Warning (10030): Net "mem.data_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 10
-Warning (10030): Net "mem.waddr_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 10
-Warning (10030): Net "mem.we_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 10
-Info (12128): Elaborating entity "sprite_rom" for hierarchy "renderer:u_draw|sprite_rom:text_rom_inst" File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 168
-Warning (10030): Net "mem.data_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 10
-Warning (10030): Net "mem.waddr_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 10
-Warning (10030): Net "mem.we_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 10
-Info (12128): Elaborating entity "sprite_rom" for hierarchy "renderer:u_draw|sprite_rom:cloud_rom_inst" File: W:/angryeces-fsm-slingshot/rtl/renderer.v Line: 194
-Warning (10030): Net "mem.data_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 10
-Warning (10030): Net "mem.waddr_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 10
-Warning (10030): Net "mem.we_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 10
-Info (12128): Elaborating entity "screen_rom" for hierarchy "screen_rom:u_scr" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 141
-Warning (10030): Net "mem.data_a" at screen_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/screen_rom.v Line: 10
-Warning (10030): Net "mem.waddr_a" at screen_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/screen_rom.v Line: 10
-Warning (10030): Net "mem.we_a" at screen_rom.v(10) has no driver or initial value, using a default initial value '0' File: W:/angryeces-fsm-slingshot/rtl/screen_rom.v Line: 10
-Info (12128): Elaborating entity "char_to_7seg" for hierarchy "char_to_7seg:d0" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 168
+Warning (10230): Verilog HDL assignment warning at angry_eces_top.v(164): truncated value with size 10 to match size of target (4) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 164
+Warning (10230): Verilog HDL assignment warning at angry_eces_top.v(165): truncated value with size 10 to match size of target (4) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 165
+Info (12128): Elaborating entity "vga_timing" for hierarchy "vga_timing:u_vga" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 64
+Info (12128): Elaborating entity "slingshot_rx" for hierarchy "slingshot_rx:u_sling" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 68
+Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(38): truncated value with size 32 to match size of target (13) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/slingshot_rx.v Line: 38
+Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(45): truncated value with size 32 to match size of target (13) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/slingshot_rx.v Line: 45
+Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(52): truncated value with size 32 to match size of target (13) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/slingshot_rx.v Line: 52
+Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(58): truncated value with size 32 to match size of target (13) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/slingshot_rx.v Line: 58
+Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(63): truncated value with size 32 to match size of target (4) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/slingshot_rx.v Line: 63
+Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(67): truncated value with size 32 to match size of target (13) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/slingshot_rx.v Line: 67
+Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(80): truncated value with size 32 to match size of target (13) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/slingshot_rx.v Line: 80
+Info (12128): Elaborating entity "ascii_to_hex" for hierarchy "slingshot_rx:u_sling|ascii_to_hex:ascii_decoder" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/slingshot_rx.v Line: 91
+Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(105): truncated value with size 8 to match size of target (4) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/slingshot_rx.v Line: 105
+Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(108): truncated value with size 8 to match size of target (4) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/slingshot_rx.v Line: 108
+Warning (10230): Verilog HDL assignment warning at slingshot_rx.v(111): truncated value with size 8 to match size of target (4) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/slingshot_rx.v Line: 111
+Info (12128): Elaborating entity "game_logic" for hierarchy "game_logic:u_game" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 116
+Warning (10230): Verilog HDL assignment warning at game_logic.v(45): truncated value with size 32 to match size of target (16) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/game_logic.v Line: 45
+Warning (10230): Verilog HDL assignment warning at game_logic.v(46): truncated value with size 32 to match size of target (16) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/game_logic.v Line: 46
+Warning (10036): Verilog HDL or VHDL warning at game_logic.v(208): object "other_width" assigned a value but never read File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/game_logic.v Line: 208
+Warning (10230): Verilog HDL assignment warning at game_logic.v(79): truncated value with size 26 to match size of target (14) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/game_logic.v Line: 79
+Warning (10230): Verilog HDL assignment warning at game_logic.v(171): truncated value with size 32 to match size of target (16) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/game_logic.v Line: 171
+Warning (10230): Verilog HDL assignment warning at game_logic.v(173): truncated value with size 32 to match size of target (9) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/game_logic.v Line: 173
+Info (12128): Elaborating entity "level_data" for hierarchy "game_logic:u_game|level_data:gen_level_data[0].level_data_inst" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/game_logic.v Line: 119
+Info (12128): Elaborating entity "collision" for hierarchy "game_logic:u_game|collision:collision_inst" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/game_logic.v Line: 135
+Warning (10230): Verilog HDL assignment warning at collision.v(94): truncated value with size 32 to match size of target (2) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/collision.v Line: 94
+Warning (10230): Verilog HDL assignment warning at collision.v(101): truncated value with size 32 to match size of target (2) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/collision.v Line: 101
+Info (12128): Elaborating entity "score_tracker" for hierarchy "score_tracker:u_score" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 120
+Info (12128): Elaborating entity "renderer" for hierarchy "renderer:u_draw" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 140
+Warning (10230): Verilog HDL assignment warning at renderer.v(153): truncated value with size 8 to match size of target (3) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 153
+Warning (10230): Verilog HDL assignment warning at renderer.v(153): truncated value with size 9 to match size of target (7) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 153
+Warning (10230): Verilog HDL assignment warning at renderer.v(155): truncated value with size 8 to match size of target (3) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 155
+Warning (10230): Verilog HDL assignment warning at renderer.v(155): truncated value with size 9 to match size of target (7) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 155
+Warning (10230): Verilog HDL assignment warning at renderer.v(157): truncated value with size 8 to match size of target (3) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 157
+Warning (10230): Verilog HDL assignment warning at renderer.v(157): truncated value with size 9 to match size of target (7) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 157
+Warning (10230): Verilog HDL assignment warning at renderer.v(159): truncated value with size 8 to match size of target (3) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 159
+Warning (10230): Verilog HDL assignment warning at renderer.v(159): truncated value with size 9 to match size of target (7) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 159
+Warning (10230): Verilog HDL assignment warning at renderer.v(161): truncated value with size 8 to match size of target (3) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 161
+Warning (10230): Verilog HDL assignment warning at renderer.v(161): truncated value with size 9 to match size of target (7) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 161
+Warning (10230): Verilog HDL assignment warning at renderer.v(163): truncated value with size 8 to match size of target (3) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 163
+Warning (10230): Verilog HDL assignment warning at renderer.v(163): truncated value with size 9 to match size of target (7) File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 163
+Info (12128): Elaborating entity "sprite_rom" for hierarchy "renderer:u_draw|sprite_rom:wood_rom_inst" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 77
+Warning (10030): Net "mem.data_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 10
+Warning (10030): Net "mem.waddr_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 10
+Warning (10030): Net "mem.we_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 10
+Info (12128): Elaborating entity "sprite_rom" for hierarchy "renderer:u_draw|sprite_rom:pig_rom_inst" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 101
+Warning (10030): Net "mem.data_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 10
+Warning (10030): Net "mem.waddr_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 10
+Warning (10030): Net "mem.we_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 10
+Info (12128): Elaborating entity "sprite_rom" for hierarchy "renderer:u_draw|sprite_rom:bird_rom_inst" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 127
+Warning (10030): Net "mem.data_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 10
+Warning (10030): Net "mem.waddr_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 10
+Warning (10030): Net "mem.we_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 10
+Info (12128): Elaborating entity "sprite_rom" for hierarchy "renderer:u_draw|sprite_rom:text_rom_inst" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 168
+Warning (10030): Net "mem.data_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 10
+Warning (10030): Net "mem.waddr_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 10
+Warning (10030): Net "mem.we_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 10
+Info (12128): Elaborating entity "sprite_rom" for hierarchy "renderer:u_draw|sprite_rom:cloud_rom_inst" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/renderer.v Line: 194
+Warning (10030): Net "mem.data_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 10
+Warning (10030): Net "mem.waddr_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 10
+Warning (10030): Net "mem.we_a" at sprite_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 10
+Info (12128): Elaborating entity "screen_rom" for hierarchy "screen_rom:u_scr" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 141
+Warning (10030): Net "mem.data_a" at screen_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/screen_rom.v Line: 10
+Warning (10030): Net "mem.waddr_a" at screen_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/screen_rom.v Line: 10
+Warning (10030): Net "mem.we_a" at screen_rom.v(10) has no driver or initial value, using a default initial value '0' File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/screen_rom.v Line: 10
+Info (12128): Elaborating entity "char_to_7seg" for hierarchy "char_to_7seg:d0" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 168
 Info (276014): Found 1 instances of uninferred RAM logic
-    Info (276004): RAM logic "renderer:u_draw|sprite_rom:text_rom_inst|mem" is uninferred due to inappropriate RAM size File: W:/angryeces-fsm-slingshot/rtl/sprite_rom.v Line: 10
+    Info (276004): RAM logic "renderer:u_draw|sprite_rom:text_rom_inst|mem" is uninferred due to inappropriate RAM size File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/sprite_rom.v Line: 10
 Info (19000): Inferred 5 megafunctions from design logic
     Info (276029): Inferred altsyncram megafunction from the following design logic: "screen_rom:u_scr|mem_rtl_0" 
         Info (286033): Parameter OPERATION_MODE set to ROM
@@ -1930,15 +1936,15 @@ Info (19000): Inferred 5 megafunctions from design logic
         Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
         Info (286033): Parameter INIT_FILE set to db/angry_eces.ram0_sprite_rom_788db80d.hdl.mif
 Info (278001): Inferred 9 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod3" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 165
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div3" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 165
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod2" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 165
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div2" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 165
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 164
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div1" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 164
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 164
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 164
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "game_logic:u_game|Div0" File: W:/angryeces-fsm-slingshot/rtl/game_logic.v Line: 173
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod3" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 165
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div3" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 165
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod2" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 165
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div2" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 165
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 164
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div1" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 164
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 164
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 164
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "game_logic:u_game|Div0" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/game_logic.v Line: 173
 Info (12130): Elaborated megafunction instantiation "screen_rom:u_scr|altsyncram:mem_rtl_0"
 Info (12133): Instantiated megafunction "screen_rom:u_scr|altsyncram:mem_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "ROM"
@@ -1952,11 +1958,11 @@ Info (12133): Instantiated megafunction "screen_rom:u_scr|altsyncram:mem_rtl_0" 
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
     Info (12134): Parameter "INIT_FILE" = "db/angry_eces.ram0_screen_rom_a38c24e4.hdl.mif"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_vvd1.tdf
-    Info (12023): Found entity 1: altsyncram_vvd1 File: W:/angryeces-fsm-slingshot/db/altsyncram_vvd1.tdf Line: 32
+    Info (12023): Found entity 1: altsyncram_vvd1 File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/altsyncram_vvd1.tdf Line: 32
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_q2a.tdf
-    Info (12023): Found entity 1: decode_q2a File: W:/angryeces-fsm-slingshot/db/decode_q2a.tdf Line: 23
+    Info (12023): Found entity 1: decode_q2a File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/decode_q2a.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_sib.tdf
-    Info (12023): Found entity 1: mux_sib File: W:/angryeces-fsm-slingshot/db/mux_sib.tdf Line: 23
+    Info (12023): Found entity 1: mux_sib File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/mux_sib.tdf Line: 23
 Info (12130): Elaborated megafunction instantiation "renderer:u_draw|sprite_rom:cloud_rom_inst|altsyncram:mem_rtl_0"
 Info (12133): Instantiated megafunction "renderer:u_draw|sprite_rom:cloud_rom_inst|altsyncram:mem_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "ROM"
@@ -1970,7 +1976,7 @@ Info (12133): Instantiated megafunction "renderer:u_draw|sprite_rom:cloud_rom_in
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
     Info (12134): Parameter "INIT_FILE" = "db/angry_eces.ram0_sprite_rom_85719c62.hdl.mif"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_1rd1.tdf
-    Info (12023): Found entity 1: altsyncram_1rd1 File: W:/angryeces-fsm-slingshot/db/altsyncram_1rd1.tdf Line: 28
+    Info (12023): Found entity 1: altsyncram_1rd1 File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/altsyncram_1rd1.tdf Line: 28
 Info (12130): Elaborated megafunction instantiation "renderer:u_draw|sprite_rom:bird_rom_inst|altsyncram:mem_rtl_0"
 Info (12133): Instantiated megafunction "renderer:u_draw|sprite_rom:bird_rom_inst|altsyncram:mem_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "ROM"
@@ -1984,11 +1990,11 @@ Info (12133): Instantiated megafunction "renderer:u_draw|sprite_rom:bird_rom_ins
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
     Info (12134): Parameter "INIT_FILE" = "db/angry_eces.ram0_sprite_rom_51a2cdc6.hdl.mif"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_k0e1.tdf
-    Info (12023): Found entity 1: altsyncram_k0e1 File: W:/angryeces-fsm-slingshot/db/altsyncram_k0e1.tdf Line: 32
+    Info (12023): Found entity 1: altsyncram_k0e1 File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/altsyncram_k0e1.tdf Line: 32
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_u0a.tdf
-    Info (12023): Found entity 1: decode_u0a File: W:/angryeces-fsm-slingshot/db/decode_u0a.tdf Line: 23
+    Info (12023): Found entity 1: decode_u0a File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/decode_u0a.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_0hb.tdf
-    Info (12023): Found entity 1: mux_0hb File: W:/angryeces-fsm-slingshot/db/mux_0hb.tdf Line: 23
+    Info (12023): Found entity 1: mux_0hb File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/mux_0hb.tdf Line: 23
 Info (12130): Elaborated megafunction instantiation "renderer:u_draw|sprite_rom:pig_rom_inst|altsyncram:mem_rtl_0"
 Info (12133): Instantiated megafunction "renderer:u_draw|sprite_rom:pig_rom_inst|altsyncram:mem_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "ROM"
@@ -2002,7 +2008,7 @@ Info (12133): Instantiated megafunction "renderer:u_draw|sprite_rom:pig_rom_inst
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
     Info (12134): Parameter "INIT_FILE" = "db/angry_eces.ram0_sprite_rom_6334b5c7.hdl.mif"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_7sd1.tdf
-    Info (12023): Found entity 1: altsyncram_7sd1 File: W:/angryeces-fsm-slingshot/db/altsyncram_7sd1.tdf Line: 28
+    Info (12023): Found entity 1: altsyncram_7sd1 File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/altsyncram_7sd1.tdf Line: 28
 Info (12130): Elaborated megafunction instantiation "renderer:u_draw|sprite_rom:wood_rom_inst|altsyncram:mem_rtl_0"
 Info (12133): Instantiated megafunction "renderer:u_draw|sprite_rom:wood_rom_inst|altsyncram:mem_rtl_0" with the following parameter:
     Info (12134): Parameter "OPERATION_MODE" = "ROM"
@@ -2016,109 +2022,109 @@ Info (12133): Instantiated megafunction "renderer:u_draw|sprite_rom:wood_rom_ins
     Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
     Info (12134): Parameter "INIT_FILE" = "db/angry_eces.ram0_sprite_rom_788db80d.hdl.mif"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_ptd1.tdf
-    Info (12023): Found entity 1: altsyncram_ptd1 File: W:/angryeces-fsm-slingshot/db/altsyncram_ptd1.tdf Line: 28
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod3" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 165
-Info (12133): Instantiated megafunction "lpm_divide:Mod3" with the following parameter: File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 165
+    Info (12023): Found entity 1: altsyncram_ptd1 File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/altsyncram_ptd1.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod3" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 165
+Info (12133): Instantiated megafunction "lpm_divide:Mod3" with the following parameter: File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 165
     Info (12134): Parameter "LPM_WIDTHN" = "10"
     Info (12134): Parameter "LPM_WIDTHD" = "4"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_h3m.tdf
-    Info (12023): Found entity 1: lpm_divide_h3m File: W:/angryeces-fsm-slingshot/db/lpm_divide_h3m.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_h3m File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/lpm_divide_h3m.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_klh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_klh File: W:/angryeces-fsm-slingshot/db/sign_div_unsign_klh.tdf Line: 25
+    Info (12023): Found entity 1: sign_div_unsign_klh File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/sign_div_unsign_klh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_eve.tdf
-    Info (12023): Found entity 1: alt_u_div_eve File: W:/angryeces-fsm-slingshot/db/alt_u_div_eve.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div3" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 165
-Info (12133): Instantiated megafunction "lpm_divide:Div3" with the following parameter: File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 165
+    Info (12023): Found entity 1: alt_u_div_eve File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/alt_u_div_eve.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div3" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 165
+Info (12133): Instantiated megafunction "lpm_divide:Div3" with the following parameter: File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 165
     Info (12134): Parameter "LPM_WIDTHN" = "10"
     Info (12134): Parameter "LPM_WIDTHD" = "4"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_ebm.tdf
-    Info (12023): Found entity 1: lpm_divide_ebm File: W:/angryeces-fsm-slingshot/db/lpm_divide_ebm.tdf Line: 25
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div2" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 165
-Info (12133): Instantiated megafunction "lpm_divide:Div2" with the following parameter: File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 165
+    Info (12023): Found entity 1: lpm_divide_ebm File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/lpm_divide_ebm.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div2" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 165
+Info (12133): Instantiated megafunction "lpm_divide:Div2" with the following parameter: File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 165
     Info (12134): Parameter "LPM_WIDTHN" = "10"
     Info (12134): Parameter "LPM_WIDTHD" = "7"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_hbm.tdf
-    Info (12023): Found entity 1: lpm_divide_hbm File: W:/angryeces-fsm-slingshot/db/lpm_divide_hbm.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_hbm File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/lpm_divide_hbm.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_nlh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_nlh File: W:/angryeces-fsm-slingshot/db/sign_div_unsign_nlh.tdf Line: 25
+    Info (12023): Found entity 1: sign_div_unsign_nlh File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/sign_div_unsign_nlh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_kve.tdf
-    Info (12023): Found entity 1: alt_u_div_kve File: W:/angryeces-fsm-slingshot/db/alt_u_div_kve.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "game_logic:u_game|lpm_divide:Div0" File: W:/angryeces-fsm-slingshot/rtl/game_logic.v Line: 173
-Info (12133): Instantiated megafunction "game_logic:u_game|lpm_divide:Div0" with the following parameter: File: W:/angryeces-fsm-slingshot/rtl/game_logic.v Line: 173
+    Info (12023): Found entity 1: alt_u_div_kve File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/alt_u_div_kve.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "game_logic:u_game|lpm_divide:Div0" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/game_logic.v Line: 173
+Info (12133): Instantiated megafunction "game_logic:u_game|lpm_divide:Div0" with the following parameter: File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/game_logic.v Line: 173
     Info (12134): Parameter "LPM_WIDTHN" = "16"
     Info (12134): Parameter "LPM_WIDTHD" = "8"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_obm.tdf
-    Info (12023): Found entity 1: lpm_divide_obm File: W:/angryeces-fsm-slingshot/db/lpm_divide_obm.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_obm File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/lpm_divide_obm.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_ulh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_ulh File: W:/angryeces-fsm-slingshot/db/sign_div_unsign_ulh.tdf Line: 25
+    Info (12023): Found entity 1: sign_div_unsign_ulh File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/sign_div_unsign_ulh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_20f.tdf
-    Info (12023): Found entity 1: alt_u_div_20f File: W:/angryeces-fsm-slingshot/db/alt_u_div_20f.tdf Line: 23
+    Info (12023): Found entity 1: alt_u_div_20f File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/db/alt_u_div_20f.tdf Line: 23
 Warning (13039): The following bidirectional pins have no drivers
-    Warning (13040): bidirectional pin "GPIO_1[0]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[1]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[2]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[3]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[4]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[5]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[6]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[7]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[8]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[9]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[10]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[11]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[12]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[13]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[14]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[15]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[16]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[17]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[18]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[19]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[20]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[21]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[22]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[23]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[24]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[25]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[26]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[27]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[28]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[29]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[30]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[31]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[32]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[33]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[34]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
-    Warning (13040): bidirectional pin "GPIO_1[35]" has no driver File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[0]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[1]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[2]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[3]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[4]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[5]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[6]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[7]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[8]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[9]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[10]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[11]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[12]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[13]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[14]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[15]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[16]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[17]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[18]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[19]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[20]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[21]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[22]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[23]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[24]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[25]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[26]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[27]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[28]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[29]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[30]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[31]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[32]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[33]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[34]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
+    Warning (13040): bidirectional pin "GPIO_1[35]" has no driver File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 9
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDR[3]" is stuck at VCC File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 5
-    Warning (13410): Pin "LEDR[4]" is stuck at GND File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 5
-    Warning (13410): Pin "LEDR[5]" is stuck at GND File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 5
-    Warning (13410): Pin "LEDR[6]" is stuck at GND File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 5
-    Warning (13410): Pin "LEDR[7]" is stuck at GND File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 5
-    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 17
+    Warning (13410): Pin "LEDR[3]" is stuck at VCC File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 5
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 5
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 5
+    Warning (13410): Pin "LEDR[6]" is stuck at GND File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 5
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 5
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 17
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 6 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file W:/angryeces-fsm-slingshot/output_files/angry_eces.map.smsg
+Info (144001): Generated suppressed messages file C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/output_files/angry_eces.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 8 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "SW[0]" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 4
-    Warning (15610): No output dependent on input pin "SW[1]" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 4
-    Warning (15610): No output dependent on input pin "SW[2]" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 4
-    Warning (15610): No output dependent on input pin "SW[3]" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 4
-    Warning (15610): No output dependent on input pin "SW[4]" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 4
-    Warning (15610): No output dependent on input pin "SW[5]" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 4
-    Warning (15610): No output dependent on input pin "SW[6]" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 4
-    Warning (15610): No output dependent on input pin "SW[7]" File: W:/angryeces-fsm-slingshot/rtl/angry_eces_top.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 4
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/rtl/angry_eces_top.v Line: 4
 Info (21057): Implemented 6029 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 81 output pins
@@ -2126,16 +2132,16 @@ Info (21057): Implemented 6029 device resources after synthesis - the final reso
     Info (21061): Implemented 5598 logic cells
     Info (21064): Implemented 288 RAM segments
     Info (21062): Implemented 11 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 107 warnings
-    Info: Peak virtual memory: 4976 megabytes
-    Info: Processing ended: Tue Nov 24 12:57:52 2026
-    Info: Elapsed time: 00:01:08
-    Info: Total CPU time (on all processors): 00:00:50
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 110 warnings
+    Info: Peak virtual memory: 5243 megabytes
+    Info: Processing ended: Tue Nov 24 21:09:27 2026
+    Info: Elapsed time: 00:02:54
+    Info: Total CPU time (on all processors): 00:02:59
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in W:/angryeces-fsm-slingshot/output_files/angry_eces.map.smsg.
+The suppressed messages can be found in C:/Users/Raiyan/GitHub/angry-birds-fpga/angryeces/output_files/angry_eces.map.smsg.
 
 
