@@ -19,7 +19,7 @@ module tb_game;
     localparam NB = 12, NP = 3, ND = 10;
     reg clk = 0;  always #10 clk = ~clk;
 
-    reg        rst = 1, frame_tick = 0, key_press = 0;
+    reg        rst = 1, frame_tick = 0, key_press = 0, key_up = 0, key_down = 0;
     reg  [9:0] sw = 10'd0;
     reg  [3:0] power = 4'd0;
     reg  [9:0] h = 0, v = 0;
@@ -31,16 +31,18 @@ module tb_game;
     wire [NP*9-1:0] pig_x_f;  wire [NP*8-1:0] pig_y_f;  wire [NP-1:0] pig_alive;
     wire [ND*9-1:0] dot_x_f;  wire [ND*8-1:0] dot_y_f;  wire [ND-1:0] dot_on;
     wire exp_on;  wire [8:0] exp_x;  wire [7:0] exp_y;  wire [5:0] exp_r;
+    wire [NB-1:0] blk_flash;  wire [NP-1:0] pig_flash;
 
-    game_logic #(.NB(NB), .NP(NP), .ND(ND), .POWER_MAX(15)) g (
-        .clk(clk), .rst(rst), .frame_tick(frame_tick), .key_press(key_press),
-        .sw(sw), .power(power),
-        .state(state), .level(level), .pts_add(pts_add), .new_game(new_game), .game_end(game_end),
+    game_logic #(.Num_blocks(NB), .Num_pigs(NP), .Num_dots(ND), .full_power(15)) g (
+        .clk(clk), .reset(rst), .frame_tick(frame_tick), .key_press(key_press),
+        .key_up(key_up), .key_down(key_down), .sw(sw), .power(power),
+        .state(state), .level(level), .ptScreen_add(pts_add), .new_game(new_game), .game_end(game_end),
         .bird(bird), .bird_vis(bird_vis), .bird_x(bird_x), .bird_y(bird_y), .waiting(waiting),
         .blk_x_f(blk_x_f), .blk_y_f(blk_y_f), .blk_horiz(blk_horiz), .blk_alive(blk_alive),
         .pig_x_f(pig_x_f), .pig_y_f(pig_y_f), .pig_alive(pig_alive),
         .dot_x_f(dot_x_f), .dot_y_f(dot_y_f), .dot_on(dot_on),
-        .exp_on(exp_on), .exp_x(exp_x), .exp_y(exp_y), .exp_r(exp_r));
+        .exp_on(exp_on), .exp_x(exp_x), .exp_y(exp_y), .exp_r(exp_r),
+        .blk_flash(blk_flash), .pig_flash(pig_flash));
 
     wire [9:0] score, high_score;
     score_tracker sc (.clk(clk), .new_game(new_game), .add(pts_add), .game_end(game_end),
@@ -48,10 +50,11 @@ module tb_game;
 
     // renderer only for the optional screenshots
     wire [11:0] rgb;
-    renderer #(.NB(NB), .NP(NP), .ND(ND)) r (
+    renderer #(.Num_blocks(NB), .Num_pigs(NP), .Num_dots(ND)) r (
         .clk(clk), .h(h), .v(v),
         .blk_x_f(blk_x_f), .blk_y_f(blk_y_f), .blk_horiz(blk_horiz), .blk_alive(blk_alive),
         .pig_x_f(pig_x_f), .pig_y_f(pig_y_f), .pig_alive(pig_alive),
+        .blk_flash(blk_flash), .pig_flash(pig_flash),
         .bird_x(bird_x), .bird_y(bird_y), .bird_type(bird), .bird_vis(bird_vis), .waiting(waiting),
         .dot_x_f(dot_x_f), .dot_y_f(dot_y_f), .dot_on(dot_on),
         .exp_on(exp_on), .exp_x(exp_x), .exp_y(exp_y), .exp_r(exp_r),
